@@ -1,6 +1,4 @@
 {
-  "name": "TODO",
-  "description": "TODO",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
@@ -24,10 +22,10 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/runtime": "^7.6.3",
-    "@nivo/bump": "^0.59.1",
     "apollo-boost": "^0.4.4",
-    "graphql": "^14.5.8",
+    "cypress": "^3.4.1",
     "isomorphic-unfetch": "^3.0.0",
+    "graphql": "^14.5.8",
     "now-sapper": "^0.35.0",
     "npm-run-all": "^4.1.5",
     "rollup": "^1.23.1",
@@ -40,5 +38,21 @@
     "sapper": "^0.27.9",
     "svelte": "^3.12.1",
     "svelte-apollo": "^0.3.0"
+  },
+  "name": "unspecified",
+  "description": "the unspecified website",
+  "homepage": "https://unspecified.io",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Clark Sell"
+    },
+    {
+      "name": "Sara Gibbons"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelloUnspecified/unspecified.io.git"
   }
 }
