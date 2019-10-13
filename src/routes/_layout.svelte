@@ -2,6 +2,7 @@
   import ApolloClient from "apollo-boost";
   import { setClient } from "svelte-apollo";
 
+  import Footer from "../components/Footer/Footer.svelte";
   import Nav from "../components/Nav.svelte";
   export let segment;
 
@@ -27,3 +28,5 @@
 <main>
   <slot />
 </main>
+
+<Footer />
