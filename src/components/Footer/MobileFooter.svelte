@@ -3,29 +3,36 @@
   import Icon from "../Icon.svelte";
 
   $: footerStyle = `
-    color: ${colors.white};
-    height: 8rem;
-    padding: 1rem;
-    background-color: ${colors.primary};
     width: 100vw;
+    color: ${colors.white};
+    height: 6rem;
+    padding: 1rem;
+    background-color: ${colors.secondary};
+    position: fixed;
+    bottom: 0;
+    text-align: center;
   `;
 
   $: iconStyle = `
     width: 2rem;
     height: 100%;
     margin: 0.5rem 0.5rem;
-    fill: ${colors.white};
+    fill: ${colors.highlight};
   `;
 </script>
 
 <style>
+  footer {
+    position: fixed;
+  }
+
   footer ul.socials li {
     display: inline;
   }
 </style>
 
 <footer style={footerStyle}>
-  CLARK! Let's GOOOOO! 
+  I'm on a phone YO!
   <ul class="socials">
     <li><Icon title="instagram" styles={iconStyle}/></li>
     <li><Icon title="github" styles={iconStyle} /></li>
