@@ -5,7 +5,6 @@
   $: footerStyle = `
     color: ${colors.white};
     height: 8rem;
-    padding: 1rem;
     background-color: ${colors.primary};
     width: 100vw;
   `;
