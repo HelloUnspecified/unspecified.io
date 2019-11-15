@@ -1,9 +1,9 @@
 <script>
   import colors from "../utils/colors";
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   import ContentHighlight from "../components/ContentHighlight.svelte";
 
-	$: headerStyle = `
+  $: headerStyle = `
     color: ${colors.secondary};
   `;
 
@@ -16,24 +16,21 @@
   `;
 
   onMount(async () => {
-    setTimeout(function(){
-      document.getElementsByClassName("logo_top_line left")[0].style.width = "33rem";
-      document.getElementsByClassName("logo_top_line right")[0].style.width = "calc(100% - 21rem)";
+    setTimeout(function() {
+      document.getElementsByClassName("logo_top_line left")[0].style.width =
+        "33rem";
+      document.getElementsByClassName("logo_top_line right")[0].style.width =
+        "calc(100% - 21rem)";
     }, 500);
   });
 </script>
 
 <style>
   h1,
-  p {
-    text-align: center;
-    margin: 0 auto;
-  }
-
   h1 {
     font-size: 5em;
     text-transform: lowercase;
-    font-family: 'Montserrat Black', sans-serif;
+    font-family: "Montserrat Black", sans-serif;
     font-weight: 700;
     margin: 0 0 0.5em 0;
     position: fixed;
@@ -46,10 +43,6 @@
     height: 100vh;
     object-fit: cover;
     z-index: 0;
-  }
-
-  p {
-    margin: 1em auto;
   }
 
   .logo {
@@ -96,7 +89,7 @@
   #scrollGuide {
     position: fixed;
     right: -6.8rem;
-    bottom: 26rem; 
+    bottom: 26rem;
     transform-origin: 0 0;
     transform: rotate(90deg);
   }
@@ -114,7 +107,7 @@
   }
 
   .icono-arrow2-right-down:after {
-    content: '';
+    content: "";
     position: absolute;
     left: -0.5rem;
     top: 5rem;
@@ -124,8 +117,7 @@
     border-right: 0.5rem solid transparent;
     border-top: 1rem solid white;
     clear: both;
-
-}
+  }
 </style>
 
 <svelte:head>
@@ -133,9 +125,9 @@
 </svelte:head>
 
 <div class="logo">
-  <span class="logo_top_line left" style={logoLineStyle}/>
+  <span class="logo_top_line left" style={logoLineStyle} />
   <h1 style={headerStyle}>unspecified</h1>
-  <span class="logo_top_line right" style={logoLineStyle}/>
+  <span class="logo_top_line right" style={logoLineStyle} />
 </div>
 
 <div>
@@ -155,4 +147,4 @@
   <span>Learn More</span>
 </div>
 
-<i class="icono-arrow2-right-down"></i>
+<i class="icono-arrow2-right-down" />
