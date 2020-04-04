@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 
-import LogoSq from "../components/logoSq"
+import LogoSq from "./shared/logoSq"
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -32,7 +32,7 @@ const Header = ({ siteTitle }) => {
   const scrolled = () => {
     return parseInt(scrollY) > 0 ? "scrolled" : ""
   }
-  console.log("scrolled", scrolled())
+  // console.log("scrolled", scrolled())
 
   return (
     <StyledHeader>

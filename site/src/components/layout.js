@@ -6,11 +6,20 @@
  */
 
 import React from "react"
+import styled from "styled-components"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+
+const StyledFooter = styled.footer`
+  height: 15rem;
+  background-color: #242e3c;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: "Coda", cursive;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,11 +37,7 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <div>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <StyledFooter>© {new Date().getFullYear()}, Unspecified</StyledFooter>
       </div>
     </>
   )
