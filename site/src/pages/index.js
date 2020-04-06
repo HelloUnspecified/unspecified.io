@@ -3,14 +3,16 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Logo from "../components/shared/logo"
+import ContentBlock from "../components/shared/contentBlock"
 import SEO from "../components/shared/seo"
+import colors from "../utilities/colors"
 
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-color: #242e3c;
-  color: #ffffff;
+  background-color: ${colors.navy};
+  color: ${colors.white};
   justify-content: center;
   align-items: center;
   position: relative;
@@ -36,12 +38,6 @@ const NavText = styled.p`
   font-size: 1.5rem;
   padding: 0 3rem;
 `
-
-const ContentBlock = styled.div`
-  margin: 6rem auto;
-  max-width: 100rem;
-`
-
 const Logos = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -62,7 +58,7 @@ const PostBlock = styled(Link)`
   padding: 1.5rem;
   margin-right: 2rem;
   border-radius: 1rem;
-  background-color: #ffffff;
+  background-color: ${colors.white};
   box-shadow: 10px 10px 8px #888888;
 `
 
@@ -96,7 +92,7 @@ const IndexPage = ({ data }) => {
           <NavText>Contact</NavText>
         </LearnMoreBlock>
       </Main>
-      <ContentBlock>
+      <ContentBlock border>
         <h2>About</h2>
         <p>
           At Unspecified, we build product that builds communities. We’re a
