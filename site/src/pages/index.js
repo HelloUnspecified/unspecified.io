@@ -1,15 +1,18 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
-import Logo from "../components/logo"
-import SEO from "../components/seo"
+import Logo from "../components/shared/logo"
+import ContentBlock from "../components/shared/contentBlock"
+import SEO from "../components/shared/seo"
+import colors from "../utilities/colors"
 
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
-  background-color: #242e3c;
-  color: #ffffff;
+  background-color: ${colors.navy};
+  color: ${colors.white};
   justify-content: center;
   align-items: center;
   position: relative;
@@ -35,15 +38,47 @@ const NavText = styled.p`
   font-size: 1.5rem;
   padding: 0 3rem;
 `
+const Logos = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6rem;
+`
 
-const AboutBlock = styled.div`
-  margin: 6rem auto;
-  max-width: 100rem;
-  padding-right: 5rem;
+const AboutLogo = styled.img`
+  height: 6rem;
+  width: auto;
+  margin: 1rem 2rem;
+`
+
+const PostBlock = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  padding: 1.5rem;
+  margin-right: 2rem;
+  border-radius: 1rem;
+  background-color: ${colors.white};
+  box-shadow: 10px 10px 8px #888888;
+`
+
+const PostImage = styled.img`
+  width: 30rem;
+  height: 10rem;
+  object-fit: cover;
+`
+
+const CurrentPosts = styled.div`
+  display: flex;
 `
 
 const IndexPage = ({ data }) => {
   console.log("data", data)
+  const {
+    posts: { edges: posts },
+    logos: { edges: logos },
+  } = data
+
   return (
     <Layout>
       <SEO title="Unspecified" />
@@ -57,7 +92,7 @@ const IndexPage = ({ data }) => {
           <NavText>Contact</NavText>
         </LearnMoreBlock>
       </Main>
-      <AboutBlock>
+      <ContentBlock border>
         <h2>About</h2>
         <p>
           At Unspecified, we build product that builds communities. We’re a
@@ -70,7 +105,58 @@ const IndexPage = ({ data }) => {
           development experiences. Executive coaching, architecture and product
           design, delivery management, and training.
         </p>
-      </AboutBlock>
+
+        <Logos>
+          {logos.map(logo => (
+            <AboutLogo src={logo.node.image.asset.url} key={logo.node.name} />
+          ))}
+        </Logos>
+
+        <Link to="/clark" style={{ paddingRight: "2rem" }}>
+          Clark Sell
+        </Link>
+        <Link to="/sara">Sara Gibbons</Link>
+      </ContentBlock>
+
+      <div
+        style={{
+          width: "100%",
+          padding: "2rem 0",
+          backgroundColor: "rgb(194,153,107, 0.2)",
+        }}
+      >
+        <ContentBlock>
+          <h2>Blog</h2>
+          <CurrentPosts>
+            {posts.map(post => (
+              <PostBlock
+                key={post.node.slug.current}
+                to={`blog/${post.node.slug.current}`}
+              >
+                <h3>{post.node.title}</h3>
+                <PostImage src={post.node.mainImage.asset.url} />
+                <p>{post.node.shortDescription}</p>
+              </PostBlock>
+            ))}
+          </CurrentPosts>
+        </ContentBlock>
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          padding: "2rem 0",
+          backgroundColor: "#242e3c",
+        }}
+      >
+        <ContentBlock>
+          <h2 style={{ color: "#fff" }}>Stuff We Can't Get Enough Of</h2>
+        </ContentBlock>
+      </div>
+
+      <ContentBlock>
+        <h2>We'd Love To Hear From You!</h2>
+      </ContentBlock>
     </Layout>
   )
 }
@@ -79,10 +165,40 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    posts: allSanityPost {
+    posts: allSanityPost(
+      limit: 4
+      sort: { fields: [publishedAt], order: DESC }
+    ) {
       edges {
         node {
           title
+          shortDescription
+          slug {
+            current
+          }
+          person {
+            name
+            slug {
+              current
+            }
+          }
+          mainImage {
+            asset {
+              url
+            }
+          }
+        }
+      }
+    }
+    logos: allSanityLogo {
+      edges {
+        node {
+          name
+          image {
+            asset {
+              url
+            }
+          }
         }
       }
     }

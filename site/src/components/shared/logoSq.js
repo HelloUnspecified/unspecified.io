@@ -13,14 +13,14 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const LogoSq = () => {
+const LogoSq = ({ className }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "unspecified-square-transparent.png" }) {
         childImageSharp {
           # Specify the image processing specifications right in the query.
           # Makes it trivial to update as your page's design changes.
-          fixed(width: 60, height: 60) {
+          fixed(width: 50, height: 50) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -28,9 +28,7 @@ const LogoSq = () => {
     }
   `)
 
-  console.log(data)
-
-  return <Img fixed={data.file.childImageSharp.fixed} />
+  return <Img fixed={data.file.childImageSharp.fixed} className={className} />
 }
 
 export default LogoSq
