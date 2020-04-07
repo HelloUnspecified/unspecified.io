@@ -7,7 +7,7 @@ export default {
     {
       name: "name",
       title: "Name",
-      type: "string"
+      type: "string",
     },
     {
       name: "slug",
@@ -15,21 +15,21 @@ export default {
       type: "slug",
       options: {
         source: "name",
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
     },
     {
       name: "image",
       title: "Image",
       type: "image",
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
       name: "bio",
@@ -40,45 +40,50 @@ export default {
           title: "Block",
           type: "block",
           styles: [{ title: "Normal", value: "normal" }],
-          lists: []
-        }
-      ]
+          lists: [],
+        },
+      ],
+    },
+    {
+      name: "listingOrder",
+      title: "Listing Order",
+      type: "number",
     },
     {
       name: "facebook",
       title: "Facebook",
       type: "string",
-      fieldset: "social"
+      fieldset: "social",
     },
     {
       name: "github",
       title: "Github",
       type: "string",
-      fieldset: "social"
+      fieldset: "social",
     },
     {
       name: "instagram",
       title: "Instagram",
       type: "string",
-      fieldset: "social"
+      fieldset: "social",
     },
     {
       name: "linkedIn",
       title: "LinkedIn",
       type: "string",
-      fieldset: "social"
+      fieldset: "social",
     },
     {
       name: "twitter",
       title: "Twitter",
       type: "string",
-      fieldset: "social"
-    }
+      fieldset: "social",
+    },
   ],
   preview: {
     select: {
       title: "name",
-      media: "image"
-    }
-  }
+      media: "image",
+    },
+  },
 };
