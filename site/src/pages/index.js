@@ -63,16 +63,33 @@ const AboutPeople = styled.div`
 `
 
 const PersonImage = styled.img`
-  width: 13rem;
+  width: 20rem;
   height: 13rem;
   object-fit: cover;
+  border-radius: 1rem;
 `
 
 const Name = styled.p`
   font-family: "Coda", cursive;
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 0;
   line-height: 1.2;
+`
+
+const Passion = styled.div`
+  border: 1px solid ${colors.linen};
+  padding: 2rem;
+  width: 40rem;
+  margin: 1rem;
+`
+
+const PassionTitle = styled.p`
+  font-family: "Coda", cursive;
+  font-size: 2rem;
+  margin-bottom: 0;
+  line-height: 1.2;
+  color: ${colors.red};
+  font-weight: 500;
 `
 
 const Title = styled.p``
@@ -83,34 +100,38 @@ const CurrentPosts = styled.div`
 
 const IndexPage = ({ data }) => {
   const {
-    posts: { edges: posts },
     logos: { edges: logos },
+    passions: { edges: passions },
     people: { edges: people },
+    posts: { edges: posts },
   } = data
 
   const bottomBlock = (
-    <AboutPeople>
-      <h2>Who We Are</h2>
-      <div style={{ display: "flex" }}>
-        {people.map(person => (
-          <Link
-            to={`/${person.node.slug.current}`}
-            style={{
-              paddingRight: "2rem",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <PersonImage
-              src={person.node.image.asset.url}
-              alt={person.node.name}
-            />
-            <Name>{person.node.name}</Name>
-            <Title>{person.node.title}</Title>
-          </Link>
-        ))}
-      </div>
-    </AboutPeople>
+    <div
+      style={{
+        display: "flex",
+        paddingTop: "2rem",
+        justifyContent: "space-evenly",
+      }}
+    >
+      {people.map(person => (
+        <div
+          // to={`/${person.node.slug.current}`}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <PersonImage
+            src={person.node.image.asset.url}
+            alt={person.node.name}
+          />
+          <Name>{person.node.name}</Name>
+          <Title>{person.node.title}</Title>
+        </div>
+      ))}
+    </div>
   )
 
   return (
@@ -121,19 +142,63 @@ const IndexPage = ({ data }) => {
           <StyledLogo />
         </div>
         <LearnMoreBlock>
-          <Link to="#blog">
-            <NavText>Blog</NavText>
-          </Link>
           <Link to="#about">
             <NavText>About</NavText>
+          </Link>
+          <Link to="#blog">
+            <NavText>Blog</NavText>
           </Link>
           <Link to="#contact">
             <NavText>Contact</NavText>
           </Link>
         </LearnMoreBlock>
       </Main>
-      <ContentBlock border id="about" bottomBlock={bottomBlock}>
-        <h2>About</h2>
+
+      {/* BLOG */}
+      <ContentBlock id="blog" border top>
+        <CurrentPosts>
+          {posts.map(post => (
+            <BlogPostPreview post={post} />
+          ))}
+        </CurrentPosts>
+      </ContentBlock>
+
+      {/* PASSIONS */}
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: colors.navy,
+          color: colors.white,
+        }}
+      >
+        <ContentBlock id="passions" border side="right" borderColor="white">
+          <h2 style={{ color: "#fff" }}>Stuff We Can't Get Enough Of</h2>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {passions.map(passion => (
+              <Passion>
+                <PassionTitle>{passion.node.title}</PassionTitle>
+                <p>{passion.node.description}</p>
+              </Passion>
+            ))}
+          </div>
+        </ContentBlock>
+      </div>
+
+      {/* SERVICES */}
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: colors.linen,
+        }}
+      >
+        <ContentBlock id="passions" border side="left" borderColor="navy">
+          <h2>Services</h2>
+        </ContentBlock>
+      </div>
+
+      {/* ABOUT */}
+      <ContentBlock border id="about" side="right">
+        <h2>Who We Are</h2>
         <p>
           At Unspecified, we build product that builds communities. We’re a
           small, proud, hard working boutique software development shop who’s
@@ -145,7 +210,7 @@ const IndexPage = ({ data }) => {
           development experiences. Executive coaching, architecture and product
           design, delivery management, and training.
         </p>
-
+        {bottomBlock}
         <Logos>
           {logos.map(logo => (
             <AboutLogo src={logo.node.image.asset.url} key={logo.node.name} />
@@ -153,38 +218,18 @@ const IndexPage = ({ data }) => {
         </Logos>
       </ContentBlock>
 
+      {/* CONTACT FORM */}
       <div
         style={{
           width: "100%",
-          padding: "2rem 0",
-          backgroundColor: "rgb(194,153,107, 0.2)",
+          backgroundColor: colors.linen,
         }}
       >
-        <ContentBlock>
-          <h2>Blog</h2>
-          <CurrentPosts>
-            {posts.map(post => (
-              <BlogPostPreview post={post} />
-            ))}
-          </CurrentPosts>
+        <ContentBlock id="contact" border bottom borderSide="left">
+          <h2>We'd Love To Hear From You!</h2>
+          <ContactForm />
         </ContentBlock>
       </div>
-
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: "#242e3c",
-        }}
-      >
-        <ContentBlock id="blog" border side="right" borderColor="white">
-          <h2 style={{ color: "#fff" }}>Stuff We Can't Get Enough Of</h2>
-        </ContentBlock>
-      </div>
-
-      <ContentBlock id="contact">
-        <h2>We'd Love To Hear From You!</h2>
-        <ContactForm />
-      </ContentBlock>
     </Layout>
   )
 }
@@ -215,6 +260,14 @@ export const pageQuery = graphql`
               url
             }
           }
+        }
+      }
+    }
+    passions: allSanityPassion {
+      edges {
+        node {
+          title
+          description
         }
       }
     }
