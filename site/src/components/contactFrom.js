@@ -1,22 +1,11 @@
 import React from "react"
+import TextInput from "../components/shared/textInput"
 
 const ContactForm = () => {
   return (
     <form action="https://formspree.io/hello@unspecified.io" method="POST">
-      <div className="formGroup">
-        <input
-          type="text"
-          name="name"
-          id="email-name"
-          placeholder="Your Name"
-        />
-        <input
-          type="email"
-          name="_replyto"
-          id="email-email"
-          placeholder="Your Email Address"
-        />
-      </div>
+      <TextInput field="name" type="text" label="Your Name" />
+      <TextInput field="email" type="email" label="Your Email Address" />
 
       <div className="formGroup">
         <textarea
@@ -38,9 +27,8 @@ const ContactForm = () => {
         />
         <input type="text" name="_gotcha" style={{ display: "none" }} />
       </div>
-
       <div className="formGroup">
-        <div class="formActions">
+        <div className="formActions">
           <input className="primary" type="submit" value="Send Message" />
           <input type="reset" value="Reset" />
         </div>

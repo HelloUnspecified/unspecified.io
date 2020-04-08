@@ -10,7 +10,7 @@ const PostBlock = styled.div`
   padding: 1.5rem;
   margin-right: 2rem;
   border-radius: 1rem;
-  margin-bottom: -12rem;
+  margin-bottom: -14rem;
 `
 
 const PostImage = styled.img`
