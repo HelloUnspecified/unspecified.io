@@ -2,11 +2,9 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-
 import Icon from "./shared/icon"
 import LogoSq from "./shared/logoSq"
 import colors from "../utilities/colors"
-import { above, below } from "../utilities/breakpoint"
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -32,75 +30,31 @@ const HeaderContent = styled.div`
   display: flex;
 `
 
-const StyledLogo = styled(LogoSq)`
+const StyledLogoDiv = styled(LogoSq)`
   padding: 1rem 2rem;
   display: unset;
-`
-
-const Email = styled.div`
-  font-family: "Coda", cursive;
-  font-size: 1.5rem;
-  color: ${colors.gold};
-  display: flex;
-  flex-grow: 2;
-  justify-content: flex-end;
-  margin-right: 2rem;
-  align-items: center;
+  margin: 0;
 `
 
 const StyledIcon = styled(Icon)`
   fill: ${colors.gold};
-  padding-right: 1rem;
+  padding: 0 2rem;
 `
-const MenuIcon = styled.div`
-  display: inline-block;
-  width: 4rem;
+
+const NavText = styled.p`
+  font-family: "Coda", cursive;
+  font-size: 2rem;
+  padding: 0 1rem;
+  color: ${colors.gold};
 
   &:hover {
-    cursor: pointer;
-  }
-
-  ${below.med`
-    right: 5rem;
-  `};
-
-  ${below.xsmall`
-    right: 0;
-  `};
-
-  ${below.small`
-    right: 0;
-  `};
-
-  &:after,
-  &:before,
-  div {
-    background-color: ${colors.gold};
-    border-radius: 0.25rem;
-    content: "";
-    display: block;
-    height: 0.5rem;
-    margin: 0.6rem 0;
-    transition: all 0.3s ease-in-out;
-  }
-
-  &.open:before {
-    transform: translateY(12px) rotate(135deg);
-  }
-
-  &.open:after {
-    transform: translateY(-12px) rotate(-135deg);
-  }
-
-  &.open div {
-    transform: scale(0);
+    color: ${colors.gold};
   }
 `
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   const [scrollY, setScrollY] = useState(0)
   const [windowHeight, setWindowHeight] = useState(0)
-  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     setScrollY(window.pageYOffset)
@@ -126,16 +80,23 @@ const Header = ({ siteTitle }) => {
   }, [])
 
   const scrolled = () => {
-    return parseInt(scrollY) > windowHeight / 2 ? "scrolled" : ""
+    return parseInt(scrollY) > windowHeight / 5 ? "scrolled" : ""
   }
 
   return (
     <StyledHeader className={scrolled()}>
       <HeaderContent>
-        <Link to="/">
-          <StyledLogo />
+        <StyledLogoDiv>
+          <LogoSq />
+        </StyledLogoDiv>
+        <div style={{ flexGrow: 2 }} />
+        <Link to="#about">
+          <NavText>About</NavText>
         </Link>
-        <Email>
+        <Link to="#blog">
+          <NavText>Blog</NavText>
+        </Link>
+        <Link to="#contact">
           <StyledIcon
             icon="email"
             height="3rem"
@@ -143,14 +104,7 @@ const Header = ({ siteTitle }) => {
             viewBoxWidth="24"
             viewBoxHeight="20"
           />
-          <p style={{ margin: 0 }}>hello@unspecified.io</p>
-        </Email>
-        <MenuIcon
-          onClick={() => setMenuOpen(!menuOpen)}
-          className={menuOpen ? "open" : ""}
-        >
-          <div />
-        </MenuIcon>
+        </Link>
       </HeaderContent>
     </StyledHeader>
   )

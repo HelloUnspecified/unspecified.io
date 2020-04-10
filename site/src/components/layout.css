@@ -272,7 +272,7 @@ h3 {
   font-family: "Coda", cursive;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1.1;
 }
 h4 {
@@ -632,7 +632,7 @@ label {
   font-size: 2rem;
   margin: 1rem;
   padding: 0 10px;
-  background-color: transparent;
+  background-color: white;
   -webkit-transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
   transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
 }
@@ -646,15 +646,15 @@ input[type="text"],
 input[type="email"] {
   width: 100%;
   padding: 1rem 2rem;
-  border: 1px solid white;
+  border: 1px solid #242e3c;
   font-size: 1.8rem;
   background-color: white;
 }
 
-input[type="textarea"] {
+textarea {
   width: 100%;
   padding: 2rem;
-  border: 1px solid white;
+  border: 1px solid #242e3c;
   font-size: 20px;
   background-color: white;
 }

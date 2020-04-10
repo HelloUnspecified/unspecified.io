@@ -1,16 +1,16 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Logo from "../components/shared/logo"
 import ContentBlock from "../components/shared/contentBlock"
 import SEO from "../components/shared/seo"
 import BlogPostPreview from "../components/blogPostPreview"
-import ContactForm from "../components/contactFrom"
+import Contact from "../components/contact"
+import TakeAction from "../components/takeAction"
 import colors from "../utilities/colors"
 
 const Main = styled.div`
-  height: 100vh;
+  height: 60vh;
   width: 100vw;
   display: flex;
   background-color: ${colors.navy};
@@ -27,44 +27,24 @@ const StyledLogo = styled(Logo)`
   margin-bottom: 3rem;
 `
 
-const LearnMoreBlock = styled.div`
-  position: absolute;
-  bottom: 1rem;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-`
-
-const NavText = styled.p`
-  font-family: "Coda", cursive;
-  font-size: 2.1rem;
-  padding: 0 3rem;
-  color: ${colors.fonts.light};
-
-  &:hover {
-    color: ${colors.gold};
-  }
-`
 const Logos = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 6rem;
+  margin-top: 5rem;
+  position: relative;
 `
 
 const AboutLogo = styled.img`
   height: 6rem;
   width: auto;
   margin: 1rem 2rem;
-`
-
-const AboutPeople = styled.div`
-  padding: 6rem 7.1rem;
+  filter: grayscale(100%);
 `
 
 const PersonImage = styled.img`
-  width: 20rem;
-  height: 13rem;
+  width: 25rem;
+  height: 15rem;
   object-fit: cover;
   border-radius: 1rem;
 `
@@ -76,8 +56,8 @@ const Name = styled.p`
   line-height: 1.2;
 `
 
-const Passion = styled.div`
-  border: 1px solid ${colors.linen};
+const Service = styled.div`
+  border: 1px solid ${colors.gold};
   padding: 2rem;
   width: 40rem;
   margin: 1rem;
@@ -96,21 +76,22 @@ const Title = styled.p``
 
 const CurrentPosts = styled.div`
   display: flex;
+  justify-content: center;
 `
 
 const IndexPage = ({ data }) => {
   const {
     logos: { edges: logos },
-    passions: { edges: passions },
     people: { edges: people },
     posts: { edges: posts },
+    services: { edges: services },
   } = data
 
   const bottomBlock = (
     <div
       style={{
         display: "flex",
-        paddingTop: "2rem",
+        paddingTop: "5rem",
         justifyContent: "space-evenly",
       }}
     >
@@ -138,68 +119,27 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Unspecified" />
       <Main>
-        <div style={{ width: "70%", height: "auto" }}>
+        <div style={{ width: "60%", height: "auto" }}>
           <StyledLogo />
         </div>
-        <LearnMoreBlock>
-          <Link to="#about">
-            <NavText>About</NavText>
-          </Link>
-          <Link to="#blog">
-            <NavText>Blog</NavText>
-          </Link>
-          <Link to="#contact">
-            <NavText>Contact</NavText>
-          </Link>
-        </LearnMoreBlock>
       </Main>
 
-      {/* BLOG */}
-      <ContentBlock id="blog" border top>
-        <CurrentPosts>
-          {posts.map(post => (
-            <BlogPostPreview post={post} />
-          ))}
-        </CurrentPosts>
-      </ContentBlock>
-
-      {/* PASSIONS */}
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: colors.navy,
-          color: colors.white,
-        }}
-      >
-        <ContentBlock id="passions" border side="right" borderColor="white">
-          <h2 style={{ color: "#fff" }}>Stuff We Can't Get Enough Of</h2>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
-            {passions.map(passion => (
-              <Passion>
-                <PassionTitle>{passion.node.title}</PassionTitle>
-                <p>{passion.node.description}</p>
-              </Passion>
-            ))}
-          </div>
-        </ContentBlock>
-      </div>
-
-      {/* SERVICES */}
+      {/* TAKE ACTION */}
       <div
         style={{
           width: "100%",
           backgroundColor: colors.linen,
         }}
       >
-        <ContentBlock id="passions" border side="left" borderColor="navy">
-          <h2>Services</h2>
+        <ContentBlock type="short">
+          <TakeAction />
         </ContentBlock>
       </div>
 
       {/* ABOUT */}
-      <ContentBlock border id="about" side="right">
-        <h2>Who We Are</h2>
-        <p>
+      <ContentBlock border id="about" side="left">
+        <h2>Unspecified Builds Product</h2>
+        <p style={{ fontSize: "1.8rem" }}>
           At Unspecified, we build product that builds communities. We’re a
           small, proud, hard working boutique software development shop who’s
           passion for software development and people have converged. It’s our
@@ -215,21 +155,59 @@ const IndexPage = ({ data }) => {
           {logos.map(logo => (
             <AboutLogo src={logo.node.image.asset.url} key={logo.node.name} />
           ))}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgb(255,255,255,0.4)",
+            }}
+          />
         </Logos>
       </ContentBlock>
 
-      {/* CONTACT FORM */}
+      {/* BLOG */}
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: colors.navy,
+        }}
+      >
+        <ContentBlock id="blog" type="wide">
+          <CurrentPosts>
+            {posts.map(post => (
+              <BlogPostPreview post={post} />
+            ))}
+          </CurrentPosts>
+        </ContentBlock>
+      </div>
+
+      {/* SERVICES */}
       <div
         style={{
           width: "100%",
           backgroundColor: colors.linen,
         }}
       >
-        <ContentBlock id="contact" border bottom borderSide="left">
-          <h2>We'd Love To Hear From You!</h2>
-          <ContactForm />
+        <ContentBlock id="services" border side="right" borderColor="white">
+          <h2>Services</h2>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {services.map(service => (
+              <Service>
+                <PassionTitle>{service.node.title}</PassionTitle>
+                <p>{service.node.description}</p>
+              </Service>
+            ))}
+          </div>
         </ContentBlock>
       </div>
+
+      {/* CONTACT FORM */}
+      <ContentBlock id="contact" border bottom borderSide="left">
+        <Contact />
+      </ContentBlock>
     </Layout>
   )
 }
@@ -263,7 +241,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    passions: allSanityPassion {
+    services: allSanityService {
       edges {
         node {
           title
