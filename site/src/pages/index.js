@@ -8,6 +8,7 @@ import BlogPostPreview from "../components/blogPostPreview"
 import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
 import colors from "../utilities/colors"
+import { below } from "../utilities/breakpoint"
 
 const Main = styled.div`
   height: 60vh;
@@ -18,6 +19,15 @@ const Main = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+`
+
+const LogoContainer = styled.div`
+  width: 60%;
+  height: auto;
+
+  ${below.med`
+    width: 80%;
+  `};
 `
 
 const StyledLogo = styled(Logo)`
@@ -40,6 +50,22 @@ const AboutLogo = styled.img`
   width: auto;
   margin: 1rem 2rem;
   filter: grayscale(100%);
+`
+
+const Peoples = styled.div`
+  display: flex;
+  padding-top: 5rem;
+  justify-content: space-evenly;
+
+  ${below.med`
+    flex-direction: column;
+  `};
+`
+
+const PersonBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const PersonImage = styled.img`
@@ -77,6 +103,10 @@ const Title = styled.p``
 const CurrentPosts = styled.div`
   display: flex;
   justify-content: center;
+
+  ${below.med`
+    flex-direction: column;
+  `};
 `
 
 const IndexPage = ({ data }) => {
@@ -88,40 +118,27 @@ const IndexPage = ({ data }) => {
   } = data
 
   const bottomBlock = (
-    <div
-      style={{
-        display: "flex",
-        paddingTop: "5rem",
-        justifyContent: "space-evenly",
-      }}
-    >
+    <Peoples>
       {people.map(person => (
-        <div
-          // to={`/${person.node.slug.current}`}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <PersonBlock>
           <PersonImage
             src={person.node.image.asset.url}
             alt={person.node.name}
           />
           <Name>{person.node.name}</Name>
           <Title>{person.node.title}</Title>
-        </div>
+        </PersonBlock>
       ))}
-    </div>
+    </Peoples>
   )
 
   return (
     <Layout>
       <SEO title="Unspecified" />
       <Main>
-        <div style={{ width: "60%", height: "auto" }}>
+        <LogoContainer>
           <StyledLogo />
-        </div>
+        </LogoContainer>
       </Main>
 
       {/* TAKE ACTION */}

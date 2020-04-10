@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 import colors from "../../utilities/colors"
+import { below } from "../../utilities/breakpoint"
 
 const Top = styled.div`
   margin: 0 auto;
@@ -18,6 +19,10 @@ const TopCurve = styled.div`
     !props.top && props.side === "left" ? props.borderSettings : "none"};
   border-right: ${props =>
     !props.top && props.side === "right" ? props.borderSettings : "none"};
+
+  ${below.med`
+    border: none;
+  `};
 `
 
 const TopSide = styled.div`
@@ -32,6 +37,10 @@ const TopSide = styled.div`
   border-top-left-radius: ${props => (props.side === "left" ? "2rem" : 0)};
   position: relative;
   top: -0.3rem;
+
+  ${below.med`
+    border: none;
+  `};
 `
 
 const TopPadding = styled.div`
@@ -43,6 +52,10 @@ const TopPadding = styled.div`
     props.side === "left" ? props.borderSettings : "none"};
   border-bottom-right-radius: ${props => (props.side === "left" ? "2rem" : 0)};
   border-bottom-left-radius: ${props => (props.side === "right" ? "2rem" : 0)};
+
+  ${below.med`
+    border: none;
+  `};
 `
 
 const BorderedBlock = styled.div`
@@ -61,6 +74,11 @@ const BorderedBlock = styled.div`
     }`};
   position: relative;
   top: -0.3rem;
+
+  ${below.med`
+    border: none;
+    padding: 2rem 3rem;
+  `};
 `
 
 const Bottom = styled.div`
@@ -83,6 +101,10 @@ const BottomPadding1 = styled.div`
   border-bottom: ${props => props.borderSettings};
   border-bottom-right-radius: ${props => (props.side === "right" ? "2rem" : 0)};
   border-bottom-left-radius: ${props => (props.side === "left" ? "2rem" : 0)};
+
+  ${below.med`
+    border: none;
+  `};
 `
 
 const BottomPadding2 = styled.div`
@@ -100,6 +122,10 @@ const BottomPadding2 = styled.div`
   position: relative;
   top: -0.3rem;
   margin-bottom: -0.6rem;
+
+  ${below.med`
+    border: none;
+  `};
 `
 
 const ContentBlock = ({
