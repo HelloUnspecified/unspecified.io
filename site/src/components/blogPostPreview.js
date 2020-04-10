@@ -6,7 +6,7 @@ import colors from "../utilities/colors"
 const PostBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 35rem;
+  width: 41rem;
   padding: 1.5rem;
   margin-right: 2rem;
   border-radius: 1rem;
@@ -14,8 +14,8 @@ const PostBlock = styled.div`
 `
 
 const PostImage = styled.img`
-  width: 35rem;
-  height: 40rem;
+  width: 41rem;
+  height: 30rem;
   object-fit: cover;
 `
 
@@ -23,8 +23,8 @@ const PostDetail = styled.div`
   background-color: ${colors.white};
   position: relative;
   top: -10rem;
-  width: 28rem;
-  height: 30rem;
+  width: 34rem;
+  height: 26rem;
   margin: 0 auto;
   padding: 2rem;
   box-shadow: 2px 2px 5px #888888;

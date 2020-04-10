@@ -16,6 +16,7 @@ const Icon = ({
   viewBoxWidth,
   title,
   icon,
+  style,
 }) => {
   return (
     <Svg
@@ -25,6 +26,7 @@ const Icon = ({
       onClick={onClick}
       height={height}
       width={width}
+      style={style}
       viewBox={`
         0 0
         ${viewBoxWidth || width || "24"}

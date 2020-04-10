@@ -47,7 +47,7 @@ const TopPadding = styled.div`
 
 const BorderedBlock = styled.div`
   margin: 0 auto;
-  max-width: 120rem;
+  max-width: ${props => (props.type === "wide" ? "100%" : "120rem")};
   border-top: none;
   border-left: ${props =>
     props.side === "left" ? props.borderSettings : "none"};
@@ -55,7 +55,10 @@ const BorderedBlock = styled.div`
     props.side === "right" ? props.borderSettings : "none"};
   border-bottom: none;
   position: relative;
-  padding: 5rem 9rem;
+  padding: ${props =>
+    `${props.type === "short" ? "1rem" : "5rem"} ${
+      props.type === "wide" ? "1rem" : "9rem"
+    }`};
   position: relative;
   top: -0.3rem;
 `
@@ -101,6 +104,7 @@ const BottomPadding2 = styled.div`
 
 const ContentBlock = ({
   children,
+  className,
   border,
   borderColor,
   borderSize,
@@ -109,6 +113,7 @@ const ContentBlock = ({
   id,
   side,
   top,
+  type,
 }) => {
   const borderSettings = border
     ? `${borderSize} solid ${colors[borderColor]}`
@@ -134,6 +139,8 @@ const ContentBlock = ({
         borderSize={borderSize}
         side={side}
         top={top}
+        className={className}
+        type={type}
       >
         {children}
       </BorderedBlock>
@@ -170,6 +177,7 @@ ContentBlock.propTypes = {
   bottomBlock: PropTypes.array,
   side: PropTypes.string,
   top: PropTypes.bool,
+  type: PropTypes.string,
 }
 
 ContentBlock.defaultProps = {
@@ -180,6 +188,7 @@ ContentBlock.defaultProps = {
   bottomBlock: [],
   side: "left",
   top: false,
+  type: "regular",
 }
 
 export default ContentBlock

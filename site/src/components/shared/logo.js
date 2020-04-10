@@ -18,7 +18,7 @@ const Logo = props => {
     query {
       placeholderImage: file(relativePath: { eq: "unspecified-logo.png" }) {
         childImageSharp {
-          fluid(maxWidth: 850) {
+          fluid(maxWidth: 650) {
             ...GatsbyImageSharpFluid_noBase64
           }
         }

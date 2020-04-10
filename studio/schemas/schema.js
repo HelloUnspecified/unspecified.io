@@ -8,7 +8,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import blockContent from "./blockContent";
 import category from "./category";
 import logo from "./logo";
-import passion from "./passion";
 import post from "./post";
 import person from "./person";
 import service from "./service";
@@ -24,7 +23,6 @@ export default createSchema({
     // in the studio.
     category,
     logo,
-    passion,
     post,
     person,
     service,
