@@ -11,6 +11,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import colors from "../utilities/colors"
+import { below } from "../utilities/breakpoint"
 import Header from "./header"
 import Icon from "./shared/icon"
 import "./layout.css"
@@ -23,6 +24,10 @@ const StyledFooter = styled.footer`
   font-family: "Coda", cursive;
   display: flex;
   padding: 3rem;
+
+  ${below.med`
+    flex-direction: column;
+  `};
 `
 
 const NavText = styled.p`

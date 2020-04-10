@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import colors from "../utilities/colors"
+import { below } from "../utilities/breakpoint"
 
 const PostBlock = styled.div`
   display: flex;
@@ -11,12 +12,23 @@ const PostBlock = styled.div`
   margin-right: 2rem;
   border-radius: 1rem;
   margin-bottom: -14rem;
+
+  ${below.med`
+    width: 35rem;
+    margin-right: 0;
+    margin-bottom: -6rem;
+  `};
 `
 
 const PostImage = styled.img`
   width: 41rem;
   height: 30rem;
   object-fit: cover;
+
+  ${below.med`
+    width: 30rem;
+    height: 20rem;
+  `};
 `
 
 const PostDetail = styled.div`
@@ -30,6 +42,13 @@ const PostDetail = styled.div`
   box-shadow: 2px 2px 5px #888888;
   display: flex;
   flex-direction: column;
+
+  ${below.med`
+    width: 28rem;
+    height: auto;
+    margin-bottom: 5rem;
+    top: -6rem;
+  `};
 `
 
 const BlogPostPreview = ({ post }) => {

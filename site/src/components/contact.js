@@ -3,15 +3,24 @@ import styled from "styled-components"
 import ContactForm from "./contactFrom"
 import Icon from "./shared/icon"
 import colors from "../utilities/colors"
+import { below } from "../utilities/breakpoint"
 
 const ContactSection = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+
+  ${below.med`
+    flex-direction: column;
+  `};
 `
 
 const Block = styled.div`
   width: 45%;
+
+  ${below.med`
+    width: 100%;
+  `};
 `
 
 const IconBlock = styled.div`
