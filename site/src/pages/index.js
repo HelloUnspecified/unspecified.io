@@ -85,7 +85,7 @@ const Name = styled.p`
 const Service = styled.div`
   border: 1px solid ${colors.gold};
   padding: 2rem;
-  width: 40rem;
+  width: 48%;
   margin: 1rem;
 `
 
@@ -154,7 +154,7 @@ const IndexPage = ({ data }) => {
       </div>
 
       {/* ABOUT */}
-      <ContentBlock border id="about" side="left">
+      <ContentBlock border id="about" side="left" top>
         <h2>Unspecified Builds Product</h2>
         <p style={{ fontSize: "1.8rem" }}>
           At Unspecified, we build product that builds communities. We’re a
@@ -208,7 +208,7 @@ const IndexPage = ({ data }) => {
           backgroundColor: colors.linen,
         }}
       >
-        <ContentBlock id="services" border side="right" borderColor="white">
+        <ContentBlock id="services">
           <h2>Services</h2>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {services.map(service => (
@@ -222,7 +222,7 @@ const IndexPage = ({ data }) => {
       </div>
 
       {/* CONTACT FORM */}
-      <ContentBlock id="contact" border bottom borderSide="left">
+      <ContentBlock id="contact" border bottom side="right">
         <Contact />
       </ContentBlock>
     </Layout>

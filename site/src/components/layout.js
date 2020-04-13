@@ -14,15 +14,17 @@ import colors from "../utilities/colors"
 import { below } from "../utilities/breakpoint"
 import Header from "./header"
 import Icon from "./shared/icon"
+import Logo from "./shared/logo"
 import "./layout.css"
 
 const StyledFooter = styled.footer`
   min-height: 15rem;
-  background-color: #242e3c;
-  color: #ffffff;
+  background-color: ${colors.navy};
+  color: ${colors.white};
   text-transform: uppercase;
   font-family: "Coda", cursive;
   display: flex;
+  flex-direction: column;
   padding: 3rem;
 
   ${below.med`
@@ -41,6 +43,11 @@ const NavText = styled.p`
   }
 `
 
+const LogoContainer = styled.div`
+  width: 20rem;
+  margin-bottom: 2rem;
+`
+
 const Email = styled.div`
   font-family: "Coda", cursive;
   font-size: 1.5rem;
@@ -55,6 +62,12 @@ const Email = styled.div`
 const StyledIcon = styled(Icon)`
   fill: ${colors.gold};
   padding-right: 1rem;
+`
+
+const Copyright = styled.div`
+  align-self: center;
+  font-size: 1.5rem;
+  color: ${colors.fonts.dark};
 `
 
 const Layout = ({ children }) => {
@@ -74,30 +87,41 @@ const Layout = ({ children }) => {
       <div>
         <main>{children}</main>
         <StyledFooter>
-          <div>
-            <Link to="#about">
-              <NavText>About</NavText>
-            </Link>
-            <Link to="#blog">
-              <NavText>Blog</NavText>
-            </Link>
-            <Link to="#contact">
-              <NavText>Contact</NavText>
-            </Link>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <Link to="#about">
+                <NavText>About</NavText>
+              </Link>
+              <Link to="#blog">
+                <NavText>Blog</NavText>
+              </Link>
+              <Link to="#contact">
+                <NavText>Contact</NavText>
+              </Link>
+            </div>
+            <div>
+              <LogoContainer>
+                <Logo />
+              </LogoContainer>
+              <Email>
+                <StyledIcon
+                  icon="email"
+                  height="2.5rem"
+                  width="2.5rem"
+                  viewBoxWidth="24"
+                  viewBoxHeight="20"
+                />
+                <p style={{ margin: 0 }}>hello@unspecified.io</p>
+              </Email>
+            </div>
           </div>
-          <div>© {new Date().getFullYear()}, Unspecified</div>
-          <div>
-            <Email>
-              <StyledIcon
-                icon="email"
-                height="3rem"
-                width="3rem"
-                viewBoxWidth="24"
-                viewBoxHeight="20"
-              />
-              <p style={{ margin: 0 }}>hello@unspecified.io</p>
-            </Email>
-          </div>
+          <Copyright>© {new Date().getFullYear()}, Unspecified</Copyright>
         </StyledFooter>
       </div>
     </>

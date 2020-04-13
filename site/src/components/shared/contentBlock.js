@@ -181,16 +181,17 @@ const ContentBlock = ({
         ></BottomPadding1>
         {side === "left" && <div style={{ width: "2rem" }} />}
       </Bottom>
-      <Bottom>
-        {side === "left" && <div style={{ width: "2rem" }} />}
-        <BottomPadding2
-          borderSettings={borderSettings}
-          borderSize={borderSize}
-          side={side}
-          bottom={bottom}
-        ></BottomPadding2>
-        {side === "right" && <div style={{ width: "2rem" }} />}
-      </Bottom>
+      {border && (
+        <Bottom>
+          {side === "left" && <div style={{ width: "2rem" }} />}
+          <BottomPadding2
+            borderSettings={borderSettings}
+            borderSize={borderSize}
+            side={side}
+          ></BottomPadding2>
+          {side === "right" && <div style={{ width: "2rem" }} />}
+        </Bottom>
+      )}
     </div>
   )
 }
