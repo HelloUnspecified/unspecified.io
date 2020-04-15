@@ -12,7 +12,7 @@ const ContactForm = () => {
           name="emailMessage"
           id="email-message"
           placeholder="Enter your message."
-          rows="6"
+          rows="4"
         />
 
         <input

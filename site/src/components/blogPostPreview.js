@@ -7,47 +7,43 @@ import { below } from "../utilities/breakpoint"
 const PostBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 41rem;
+  max-width: 60rem;
   padding: 1.5rem;
   margin-right: 2rem;
   border-radius: 1rem;
-  margin-bottom: -14rem;
+  margin-bottom: -10rem;
 
-  ${below.med`
-    width: 35rem;
+  ${below.larger`
+    width: 70%;
     margin-right: 0;
     margin-bottom: -6rem;
+  `};
+
+  ${below.small`
+    width: 100%;
   `};
 `
 
 const PostImage = styled.img`
-  width: 41rem;
+  max-width: 100%;
   height: 30rem;
   object-fit: cover;
-
-  ${below.med`
-    width: 30rem;
-    height: 20rem;
-  `};
 `
 
 const PostDetail = styled.div`
   background-color: ${colors.white};
   position: relative;
   top: -10rem;
-  width: 34rem;
-  height: 26rem;
+  width: 94%;
+  height: 24rem;
   margin: 0 auto;
   padding: 2rem;
   box-shadow: 2px 2px 5px #888888;
   display: flex;
   flex-direction: column;
 
-  ${below.med`
-    width: 28rem;
-    height: auto;
-    margin-bottom: 5rem;
-    top: -6rem;
+  ${below.small`
+    height: 34rem;
   `};
 `
 
