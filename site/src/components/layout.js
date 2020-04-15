@@ -14,8 +14,10 @@ import colors from "../utilities/colors"
 import { below } from "../utilities/breakpoint"
 import Header from "./header"
 import Icon from "./shared/icon"
-import Logo from "./shared/logo"
+import ContentBlock from "./shared/contentBlock"
 import "./layout.css"
+
+const iconSize = "3rem"
 
 const StyledFooter = styled.footer`
   min-height: 15rem;
@@ -44,8 +46,12 @@ const NavText = styled.p`
 `
 
 const LogoContainer = styled.div`
-  width: 20rem;
-  margin-bottom: 2rem;
+  width: 35rem;
+  margin-bottom: 1rem;
+
+  ${below.med`
+    width: 100%;
+  `};
 `
 
 const Email = styled.div`
@@ -54,20 +60,41 @@ const Email = styled.div`
   color: ${colors.gold};
   display: flex;
   flex-grow: 2;
-  justify-content: flex-end;
+  justify-content: center;
   margin-right: 2rem;
   align-items: center;
 `
 
 const StyledIcon = styled(Icon)`
   fill: ${colors.gold};
-  padding-right: 1rem;
+  padding: 0 1.25rem;
 `
 
 const Copyright = styled.div`
-  align-self: center;
+  text-align: center;
   font-size: 1.5rem;
   color: ${colors.fonts.dark};
+`
+
+const LegalLink = styled(Link)`
+  padding: 0 1rem;
+  color: ${colors.fonts.dark};
+
+  &:hover {
+    color: ${colors.gold};
+  }
+`
+
+const FooterTop = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+
+  ${below.med`
+    flex-direction: column;
+    align-content: center;
+  `};
 `
 
 const Layout = ({ children }) => {
@@ -87,41 +114,90 @@ const Layout = ({ children }) => {
       <div>
         <main>{children}</main>
         <StyledFooter>
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <Link to="#about">
-                <NavText>About</NavText>
-              </Link>
-              <Link to="#blog">
-                <NavText>Blog</NavText>
-              </Link>
-              <Link to="#contact">
-                <NavText>Contact</NavText>
-              </Link>
+          <ContentBlock type="short">
+            <FooterTop>
+              <div>
+                <LogoContainer>
+                  <img src="/unspecified-logo-transparent.svg" />
+                </LogoContainer>
+              </div>
+              <div style={{ display: "flex", alignSelf: "center" }}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Link to="#about">
+                    <NavText>About</NavText>
+                  </Link>
+                  <Link to="#blog">
+                    <NavText>Blog</NavText>
+                  </Link>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Link to="#services">
+                    <NavText>Services</NavText>
+                  </Link>
+                  <Link to="#contact">
+                    <NavText>Contact</NavText>
+                  </Link>
+                </div>
+              </div>
+            </FooterTop>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                paddingBottom: "6rem",
+              }}
+            >
+              <StyledIcon
+                icon="email"
+                height={iconSize}
+                width={iconSize}
+                viewBoxWidth="24"
+                viewBoxHeight="20"
+              />
+              <StyledIcon
+                icon="facebook"
+                height={iconSize}
+                width={iconSize}
+                viewBoxWidth="24"
+                viewBoxHeight="20"
+              />{" "}
+              <StyledIcon
+                icon="linkedIn"
+                height={iconSize}
+                width={iconSize}
+                viewBoxWidth="24"
+                viewBoxHeight="20"
+              />
+              <StyledIcon
+                icon="github"
+                height={iconSize}
+                width={iconSize}
+                viewBoxWidth="24"
+                viewBoxHeight="20"
+              />
+              <StyledIcon
+                icon="youtube"
+                height={iconSize}
+                width={iconSize}
+                viewBoxWidth="40"
+                viewBoxHeight="26"
+              />
             </div>
-            <div>
-              <LogoContainer>
-                <Logo />
-              </LogoContainer>
-              <Email>
-                <StyledIcon
-                  icon="email"
-                  height="2.5rem"
-                  width="2.5rem"
-                  viewBoxWidth="24"
-                  viewBoxHeight="20"
-                />
-                <p style={{ margin: 0 }}>hello@unspecified.io</p>
-              </Email>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                paddingBottom: "2rem",
+              }}
+            >
+              <LegalLink to="/terms-of-use">Terms of Use</LegalLink>
+              <LegalLink to="/privacy-policy">Privacy Policy</LegalLink>
+              <LegalLink to="/copyright-policy">Copyright Policy</LegalLink>
             </div>
-          </div>
-          <Copyright>© {new Date().getFullYear()}, Unspecified</Copyright>
+            <Copyright>
+              © {new Date().getFullYear()}, Unspecified <span>&trade;</span>
+            </Copyright>
+          </ContentBlock>
         </StyledFooter>
       </div>
     </>

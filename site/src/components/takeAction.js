@@ -38,7 +38,12 @@ const TakeAction = () => {
       </p>
       <FormFields>
         <StyledInput type="text" placeholder="(___) ___-____" />
-        <input className="primary" type="submit" value="Sign me up!" />
+        <input
+          className="primary"
+          type="submit"
+          value="Sign me up!"
+          style={{ margin: 0 }}
+        />
       </FormFields>
     </div>
   )

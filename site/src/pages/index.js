@@ -30,7 +30,7 @@ const LogoContainer = styled.div`
   `};
 `
 
-const StyledLogo = styled(Logo)`
+const StyledLogo = styled.img`
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -77,9 +77,20 @@ const PersonImage = styled.img`
 
 const Name = styled.p`
   font-family: "Coda", cursive;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: 600;
   margin-bottom: 0;
   line-height: 1.2;
+`
+
+const ServicesList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  ${below.med`
+    flex-direction: column;
+    align-items: center;
+  `};
 `
 
 const Service = styled.div`
@@ -87,12 +98,20 @@ const Service = styled.div`
   padding: 2rem;
   width: 48%;
   margin: 1rem;
+
+  ${below.med`
+    width: 70%;
+  `};
+
+  ${below.small`
+    width: 100%;
+  `};
 `
 
-const PassionTitle = styled.p`
+const ServiceTitle = styled.p`
   font-family: "Coda", cursive;
-  font-size: 2rem;
-  margin-bottom: 0;
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
   line-height: 1.2;
   color: ${colors.red};
   font-weight: 500;
@@ -106,6 +125,7 @@ const CurrentPosts = styled.div`
 
   ${below.med`
     flex-direction: column;
+    align-items: center;
   `};
 `
 
@@ -137,7 +157,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Unspecified" />
       <Main>
         <LogoContainer>
-          <StyledLogo />
+          <StyledLogo src="/unspecified-logo-transparent.svg" />
         </LogoContainer>
       </Main>
 
@@ -154,15 +174,15 @@ const IndexPage = ({ data }) => {
       </div>
 
       {/* ABOUT */}
-      <ContentBlock border id="about" side="left" top>
+      <ContentBlock border id="about" side="left" top borderColor="gold">
         <h2>Unspecified Builds Product</h2>
-        <p style={{ fontSize: "1.8rem" }}>
+        <p style={{ lineHeight: "1.9" }}>
           At Unspecified, we build product that builds communities. We’re a
           small, proud, hard working boutique software development shop who’s
           passion for software development and people have converged. It’s our
           mission to create software that connects people in a deeper, more
           meaningful way. We build websites, we build devices, we build services
-          to support business, we make software to support people.We also
+          to support business, we make software to support people. We also
           provide a few consulting services for business in need of senior level
           development experiences. Executive coaching, architecture and product
           design, delivery management, and training.
@@ -210,14 +230,14 @@ const IndexPage = ({ data }) => {
       >
         <ContentBlock id="services">
           <h2>Services</h2>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <ServicesList>
             {services.map(service => (
               <Service>
-                <PassionTitle>{service.node.title}</PassionTitle>
+                <ServiceTitle>{service.node.title}</ServiceTitle>
                 <p>{service.node.description}</p>
               </Service>
             ))}
-          </div>
+          </ServicesList>
         </ContentBlock>
       </div>
 

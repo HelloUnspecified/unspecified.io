@@ -389,7 +389,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 figure {
   margin-left: 0;
@@ -456,7 +456,6 @@ form {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
 }
 noscript {
   margin-left: 0;
@@ -624,6 +623,11 @@ pre tt:after {
 form div {
   position: relative;
   margin: 4rem 0;
+}
+
+.formActions,
+.formGroup {
+  margin-bottom: 0;
 }
 
 label {

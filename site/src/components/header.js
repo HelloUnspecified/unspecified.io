@@ -80,7 +80,8 @@ const Header = () => {
   }, [])
 
   const scrolled = () => {
-    return parseInt(scrollY) > windowHeight / 5 ? "scrolled" : ""
+    // return parseInt(scrollY) > windowHeight / 5 ? "scrolled" : ""
+    return parseInt(scrollY) > 0 ? "scrolled" : ""
   }
 
   return (
@@ -95,6 +96,9 @@ const Header = () => {
         </Link>
         <Link to="#blog">
           <NavText>Blog</NavText>
+        </Link>
+        <Link to="#services">
+          <NavText>Services</NavText>
         </Link>
         <Link to="#contact">
           <StyledIcon
