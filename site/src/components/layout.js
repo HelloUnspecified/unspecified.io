@@ -100,7 +100,7 @@ const FooterTop = styled.div`
   `};
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, fixedHeader }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -113,7 +113,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        fixedHeader={fixedHeader}
+      />
       <div>
         <main>{children}</main>
         <StyledFooter>
@@ -169,9 +172,9 @@ const Layout = ({ children }) => {
                 paddingBottom: "2rem",
               }}
             >
-              <LegalLink to="/terms-of-use">Terms of Use</LegalLink>
-              <LegalLink to="/privacy-policy">Privacy Policy</LegalLink>
-              <LegalLink to="/copyright-policy">Copyright Policy</LegalLink>
+              <LegalLink to="/legal/terms-of-use">Terms of Use</LegalLink>
+              <LegalLink to="/legal/privacy">Privacy Policy</LegalLink>
+              <LegalLink to="/legal/copyright">Copyright Policy</LegalLink>
             </div>
             <Copyright>
               © {new Date().getFullYear()}, Unspecified <span>&trade;</span>

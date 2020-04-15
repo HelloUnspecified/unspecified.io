@@ -6,8 +6,14 @@
 
 // You can delete this file if you're not using it
 
-async function createBlogPostPages(graphql, actions) {
+const path = require(`path`)
+
+async function createPages(graphql, actions) {
   const { createPage } = actions
+  const blogPostTemplate = path.resolve(`src/templates/blogPost.js`)
+  const personTemplate = path.resolve(`src/templates/person.js`)
+  const legalPageTemplate = path.resolve(`src/templates/legalPage.js`)
+
   const result = await graphql(`
     {
       posts: allSanityPost(
@@ -34,6 +40,18 @@ async function createBlogPostPages(graphql, actions) {
           }
         }
       }
+      legalPages: allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              path
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -42,17 +60,15 @@ async function createBlogPostPages(graphql, actions) {
   const {
     people: { edges: people },
     posts: { edges: posts },
+    legalPages: { edges: legalPages },
   } = result.data
-
-  console.log("posts", posts)
-  console.log("people", people)
 
   posts.forEach(({ node: { id, slug } }) => {
     const path = `/blog/${slug.current}/`
 
     createPage({
       path,
-      component: require.resolve("./src/templates/blogPost.js"),
+      component: blogPostTemplate,
       context: { id },
     })
   })
@@ -62,12 +78,21 @@ async function createBlogPostPages(graphql, actions) {
 
     createPage({
       path,
-      component: require.resolve("./src/templates/person.js"),
+      component: personTemplate,
       context: { id },
+    })
+  })
+
+  legalPages.forEach(({ node }) => {
+    console.log("node----", node)
+    createPage({
+      path: node.frontmatter.path,
+      component: legalPageTemplate,
+      context: {}, // additional data can be passed via context
     })
   })
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  await createBlogPostPages(graphql, actions)
+  await createPages(graphql, actions)
 }

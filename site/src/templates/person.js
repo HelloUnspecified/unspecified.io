@@ -9,7 +9,7 @@ const ContentBlock = styled.div`
   max-width: 100rem;
 `
 
-const BlogPostTemplate = props => {
+const PersonTemplate = props => {
   const { data, errors } = props
   const person = data && data.person
 
@@ -28,7 +28,7 @@ const BlogPostTemplate = props => {
   )
 }
 
-export default BlogPostTemplate
+export default PersonTemplate
 
 export const query = graphql`
   query PersonTemplateQuery($id: String!) {

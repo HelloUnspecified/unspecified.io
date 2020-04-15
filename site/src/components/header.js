@@ -30,7 +30,7 @@ const HeaderContent = styled.div`
   display: flex;
 `
 
-const StyledLogoDiv = styled(LogoSq)`
+const StyledLogo = styled(LogoSq)`
   padding: 1rem 2rem;
   display: unset;
   margin: 0;
@@ -52,7 +52,7 @@ const NavText = styled.p`
   }
 `
 
-const Header = () => {
+const Header = ({ fixedHeader }) => {
   const [scrollY, setScrollY] = useState(0)
   const [windowHeight, setWindowHeight] = useState(0)
 
@@ -80,16 +80,18 @@ const Header = () => {
   }, [])
 
   const scrolled = () => {
-    // return parseInt(scrollY) > windowHeight / 5 ? "scrolled" : ""
-    return parseInt(scrollY) > 0 ? "scrolled" : ""
+    console.log("fixedHeader", fixedHeader)
+    if (fixedHeader || parseInt(scrollY) > 0) {
+      return "scrolled"
+    }
   }
 
   return (
     <StyledHeader className={scrolled()}>
       <HeaderContent>
-        <StyledLogoDiv>
-          <LogoSq />
-        </StyledLogoDiv>
+        <Link to="/" style={{ paddingTop: "2.6rem" }}>
+          <StyledLogo />
+        </Link>
         <div style={{ flexGrow: 2 }} />
         <Link to="#about">
           <NavText>About</NavText>
@@ -115,10 +117,12 @@ const Header = () => {
 }
 
 Header.propTypes = {
+  fixedHeader: PropTypes.bool,
   siteTitle: PropTypes.string,
 }
 
 Header.defaultProps = {
+  fixedHeader: false,
   siteTitle: ``,
 }
 

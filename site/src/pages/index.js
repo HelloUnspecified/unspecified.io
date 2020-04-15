@@ -7,8 +7,7 @@ import SEO from "../components/shared/seo"
 import BlogPostPreview from "../components/blogPostPreview"
 import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
-import colors from "../utilities/colors"
-import { below } from "../utilities/breakpoint"
+import { below, colors } from "../utilities"
 
 const Main = styled.div`
   height: 60vh;
