@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Icon from "./shared/icon"
 import LogoSq from "./shared/logoSq"
-import colors from "../utilities/colors"
+import { colors } from "../utilities"
 
 const StyledHeader = styled.header`
   position: fixed;

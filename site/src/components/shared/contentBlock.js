@@ -1,8 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import colors from "../../utilities/colors"
-import { below } from "../../utilities/breakpoint"
+import { below, colors } from "../../utilities"
 
 const Top = styled.div`
   margin: 0 auto;

@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import colors from "../utilities/colors"
-import { below } from "../utilities/breakpoint"
+import { below, colors } from "../utilities"
 
 const PostBlock = styled.div`
   display: flex;
