@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { below, colors } from "../utilities"
 
-const PostBlock = styled.div`
+const PostBlock = styled(Link)`
   display: flex;
   flex-direction: column;
   max-width: 60rem;
@@ -59,12 +59,12 @@ const BlogPostPreview = ({ post }) => {
   } = post
 
   return (
-    <PostBlock key={currentSlug}>
+    <PostBlock key={currentSlug} to={`blog/${currentSlug}`}>
       <PostImage src={imageUrl} />
       <PostDetail>
         <h3>{title}</h3>
         <p style={{ flexGrow: 2 }}>{shortDescription}</p>
-        <Link to={`blog/${currentSlug}`}>Read More</Link>
+        <p>Read More</p>
       </PostDetail>
     </PostBlock>
   )

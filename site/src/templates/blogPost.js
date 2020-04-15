@@ -1,32 +1,45 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import BlockContent from "../components/shared/blockContent"
+import ContentBlock from "../components/shared/contentBlock"
 import SEO from "../components/shared/seo"
 import Layout from "../components/layout"
+import moment from "moment"
+import { colors } from "../utilities"
 
-const ContentBlock = styled.div`
-  margin: 6rem auto;
-  max-width: 100rem;
+const CategoryList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+`
+
+const Category = styled.li`
+  background-color: ${colors.linen};
+  color: ${colors.navy};
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
 `
 
 const BlogPostTemplate = props => {
-  const { data, errors } = props
+  const { data } = props
   const post = data && data.post
 
   console.log("post", post)
   return (
-    <Layout>
+    <Layout fixedHeader>
       <SEO title={`Unspecified - ${post.title}`} />
       <ContentBlock>
-        <h1>{post.title}</h1>
-        <p>{post.person.name}</p>
-        <p>{post.publishedAt}</p>
-        <ul>
+        <h1 style={{ paddingTop: "6rem" }}>{post.title}</h1>
+        <p>Written By: {post.person.name}</p>
+        <p>Published On: {moment(post.publishedAt).format("M/D/YY")}</p>
+        <CategoryList>
           {post.categories.map(category => (
-            <li key={category._id}>{category.title}</li>
+            <Category key={category._id}>{category.title}</Category>
           ))}
-        </ul>
-        {/* <p>{post.bodyRaw}</p> */}
+        </CategoryList>
+        {post._rawBody && <BlockContent blocks={post._rawBody} />}
       </ContentBlock>
     </Layout>
   )

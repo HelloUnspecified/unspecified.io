@@ -18,7 +18,7 @@ const PersonTemplate = props => {
   const { name, title } = person
 
   return (
-    <Layout>
+    <Layout fixedHeader>
       <SEO title={`Unspecified - ${person.name}`} />
       <ContentBlock>
         <h1>{name}</h1>

@@ -80,7 +80,6 @@ const Header = ({ fixedHeader }) => {
   }, [])
 
   const scrolled = () => {
-    console.log("fixedHeader", fixedHeader)
     if (fixedHeader || parseInt(scrollY) > 0) {
       return "scrolled"
     }
