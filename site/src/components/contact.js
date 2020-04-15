@@ -2,10 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import ContactForm from "./contactFrom"
 import Icon from "./shared/icon"
-import colors from "../utilities/colors"
-import { below } from "../utilities/breakpoint"
+import { below, colors, socials } from "../utilities"
 
-const iconSize = "3.9rem"
+const iconSize = "5.5rem"
 
 const ContactSection = styled.div`
   display: flex;
@@ -34,18 +33,25 @@ const Block = styled.div`
 const IconBlock = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  align-items: center;
 
   p {
     padding-left: 1rem;
-    padding-top: 0.9rem;
+    line-height: 1.4;
     flex-grow: 2;
+    margin-bottom: 0;
   }
 `
 
 const StyledIcon = styled(Icon)`
   fill: ${colors.red};
   padding-right: 1rem;
+  width: ${iconSize};
+
+  &:hover {
+    fill: ${colors.gold};
+  }
 `
 
 const Socials = styled.div`
@@ -80,56 +86,20 @@ const Contact = () => {
       <Block>
         <h2>Stay In Touch</h2>
         <Socials>
-          <IconBlock>
-            <StyledIcon
-              icon="email"
-              height={iconSize}
-              width={iconSize}
-              viewBoxWidth="24"
-              viewBoxHeight="20"
-            />
-            <p>Email us yo</p>
-          </IconBlock>
-          <IconBlock>
-            <StyledIcon
-              icon="facebook"
-              height={iconSize}
-              width={iconSize}
-              viewBoxWidth="24"
-              viewBoxHeight="20"
-            />
-            <p>facebooking the things</p>
-          </IconBlock>
-          <IconBlock>
-            <StyledIcon
-              icon="linkedIn"
-              height={iconSize}
-              width={iconSize}
-              viewBoxWidth="24"
-              viewBoxHeight="20"
-            />
-            <p>some words about our linkedin coolness</p>
-          </IconBlock>
-          <IconBlock>
-            <StyledIcon
-              icon="github"
-              height={iconSize}
-              width={iconSize}
-              viewBoxWidth="24"
-              viewBoxHeight="20"
-            />
-            <p>githubbbbsss</p>
-          </IconBlock>
-          <IconBlock>
-            <StyledIcon
-              icon="youtube"
-              height={iconSize}
-              width={iconSize}
-              viewBoxWidth="40"
-              viewBoxHeight="26"
-            />
-            <p>youtube</p>
-          </IconBlock>
+          {socials.map(social => (
+            <IconBlock>
+              <a href={social.url}>
+                <StyledIcon
+                  icon={social.icon}
+                  height={iconSize}
+                  width={iconSize}
+                  viewBoxWidth={social.viewbox.width}
+                  viewBoxHeight={social.viewbox.height}
+                />
+              </a>
+              <p>{social.description}</p>
+            </IconBlock>
+          ))}
         </Socials>
         <div style={{ alignSelf: "flex-end", width: "100%" }}>
           <h2 style={{ marginBottom: 0, paddingTop: "4rem" }}>

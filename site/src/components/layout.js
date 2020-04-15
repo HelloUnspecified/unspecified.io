@@ -10,14 +10,13 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import colors from "../utilities/colors"
-import { below } from "../utilities/breakpoint"
+import { below, colors, socials } from "../utilities"
 import Header from "./header"
 import Icon from "./shared/icon"
 import ContentBlock from "./shared/contentBlock"
 import "./layout.css"
 
-const iconSize = "3rem"
+const iconSize = "2.5rem"
 
 const StyledFooter = styled.footer`
   min-height: 15rem;
@@ -68,6 +67,10 @@ const Email = styled.div`
 const StyledIcon = styled(Icon)`
   fill: ${colors.gold};
   padding: 0 1.25rem;
+
+  &:hover {
+    fill ${colors.red}
+  }
 `
 
 const Copyright = styled.div`
@@ -97,7 +100,7 @@ const FooterTop = styled.div`
   `};
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, fixedHeader }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -110,7 +113,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        fixedHeader={fixedHeader}
+      />
       <div>
         <main>{children}</main>
         <StyledFooter>
@@ -147,41 +153,17 @@ const Layout = ({ children }) => {
                 paddingBottom: "6rem",
               }}
             >
-              <StyledIcon
-                icon="email"
-                height={iconSize}
-                width={iconSize}
-                viewBoxWidth="24"
-                viewBoxHeight="20"
-              />
-              <StyledIcon
-                icon="facebook"
-                height={iconSize}
-                width={iconSize}
-                viewBoxWidth="24"
-                viewBoxHeight="20"
-              />{" "}
-              <StyledIcon
-                icon="linkedIn"
-                height={iconSize}
-                width={iconSize}
-                viewBoxWidth="24"
-                viewBoxHeight="20"
-              />
-              <StyledIcon
-                icon="github"
-                height={iconSize}
-                width={iconSize}
-                viewBoxWidth="24"
-                viewBoxHeight="20"
-              />
-              <StyledIcon
-                icon="youtube"
-                height={iconSize}
-                width={iconSize}
-                viewBoxWidth="40"
-                viewBoxHeight="26"
-              />
+              {socials.map(social => (
+                <a href={social.url}>
+                  <StyledIcon
+                    icon={social.icon}
+                    height={iconSize}
+                    width={iconSize}
+                    viewBoxWidth={social.viewbox.width}
+                    viewBoxHeight={social.viewbox.height}
+                  />
+                </a>
+              ))}
             </div>
             <div
               style={{
@@ -190,9 +172,9 @@ const Layout = ({ children }) => {
                 paddingBottom: "2rem",
               }}
             >
-              <LegalLink to="/terms-of-use">Terms of Use</LegalLink>
-              <LegalLink to="/privacy-policy">Privacy Policy</LegalLink>
-              <LegalLink to="/copyright-policy">Copyright Policy</LegalLink>
+              <LegalLink to="/legal/terms-of-use">Terms of Use</LegalLink>
+              <LegalLink to="/legal/privacy">Privacy Policy</LegalLink>
+              <LegalLink to="/legal/copyright">Copyright Policy</LegalLink>
             </div>
             <Copyright>
               © {new Date().getFullYear()}, Unspecified <span>&trade;</span>

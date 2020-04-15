@@ -1,6 +1,5 @@
-const colors = {
+export const colors = {
   navy: "#242E3C",
-  // navy: "#21263D",
   red: "#CE3240",
   gold: "#C3996B",
   linen: "#f3ebe2",
@@ -12,5 +11,3 @@ const colors = {
     dark: "#555555",
   },
 }
-
-export default colors
