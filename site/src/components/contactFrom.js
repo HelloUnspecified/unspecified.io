@@ -3,13 +3,18 @@ import TextInput from "../components/shared/textInput"
 
 const ContactForm = () => {
   return (
-    <form action="https://formspree.io/hello@unspecified.io" method="POST">
-      <TextInput field="name" type="text" label="Your Name" />
-      <TextInput field="email" type="email" label="Your Email Address" />
+    <form action="https://formspree.io/xjvedbgq" method="POST">
+      <TextInput field="name" type="text" name="name" label="Your Name" />
+      <TextInput
+        field="email"
+        type="email"
+        name="email"
+        label="Your Email Address"
+      />
 
       <div className="formGroup">
         <textarea
-          name="emailMessage"
+          name="message"
           id="email-message"
           placeholder="Enter your message."
           rows="5"
