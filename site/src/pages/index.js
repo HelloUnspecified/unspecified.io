@@ -34,6 +34,7 @@ const StyledLogo = styled.img`
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   margin-bottom: 3rem;
+  max-height: 50vh;
 `
 
 const Logos = styled.div`
