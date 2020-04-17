@@ -26,7 +26,6 @@ const StyledFooter = styled.footer`
   font-family: "Coda", cursive;
   display: flex;
   flex-direction: column;
-  padding: 3rem;
 
   ${below.med`
     flex-direction: column;
@@ -37,10 +36,10 @@ const NavText = styled.p`
   font-family: "Coda", cursive;
   font-size: 2.1rem;
   padding: 0 3rem;
-  color: ${colors.fonts.light};
+  color: ${colors.gold};
 
   &:hover {
-    color: ${colors.gold};
+    color: ${colors.red};
   }
 `
 
@@ -53,20 +52,11 @@ const LogoContainer = styled.div`
   `};
 `
 
-const Email = styled.div`
-  font-family: "Coda", cursive;
-  font-size: 1.5rem;
-  color: ${colors.gold};
-  display: flex;
-  flex-grow: 2;
-  justify-content: center;
-  margin-right: 2rem;
-  align-items: center;
-`
-
 const StyledIcon = styled(Icon)`
   fill: ${colors.gold};
-  padding: 0 1.25rem;
+  padding: 0;
+  height: ${iconSize};
+  width: ${iconSize};
 
   &:hover {
     fill ${colors.red}
@@ -84,7 +74,7 @@ const LegalLink = styled(Link)`
   color: ${colors.fonts.dark};
 
   &:hover {
-    color: ${colors.gold};
+    color: ${colors.red};
   }
 `
 
@@ -120,7 +110,7 @@ const Layout = ({ children, fixedHeader }) => {
       <div>
         <main>{children}</main>
         <StyledFooter>
-          <ContentBlock type="short">
+          <ContentBlock side="left" topSpillOver>
             <FooterTop>
               <div>
                 <LogoContainer>
@@ -154,7 +144,7 @@ const Layout = ({ children, fixedHeader }) => {
               }}
             >
               {socials.map(social => (
-                <a href={social.url}>
+                <a href={social.url} style={{ padding: "0 1.25rem" }}>
                   <StyledIcon
                     icon={social.icon}
                     height={iconSize}

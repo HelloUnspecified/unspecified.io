@@ -28,6 +28,8 @@ const HeaderContent = styled.div`
   align-items: center;
   height: 7rem;
   display: flex;
+  margin: 0 auto;
+  max-width: 120rem;
 `
 
 const StyledLogo = styled(LogoSq)`
@@ -39,6 +41,11 @@ const StyledLogo = styled(LogoSq)`
 const StyledIcon = styled(Icon)`
   fill: ${colors.gold};
   padding: 0 2rem;
+  margin-top: 2rem;
+
+  &:hover {
+    fill: ${colors.red};
+  }
 `
 
 const NavText = styled.p`
@@ -46,9 +53,10 @@ const NavText = styled.p`
   font-size: 2rem;
   padding: 0 1rem;
   color: ${colors.gold};
+  margin-bottom: 0;
 
   &:hover {
-    color: ${colors.gold};
+    color: ${colors.red};
   }
 `
 

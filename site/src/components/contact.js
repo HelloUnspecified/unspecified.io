@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import ContactForm from "./contactFrom"
+import ContactForm from "./contactForm"
 import Icon from "./shared/icon"
 import { below, colors, socials } from "../utilities"
 
@@ -102,9 +102,11 @@ const Contact = () => {
           ))}
         </Socials>
         <div style={{ alignSelf: "flex-end", width: "100%" }}>
-          <h2 style={{ marginBottom: 0, paddingTop: "4rem" }}>
-            Chat With Us Now!
-          </h2>
+          <h2 style={{ marginBottom: 0, paddingTop: "4rem" }}>Sign Up!</h2>
+          <p>
+            To connect directly to us and be the first to hear all Unspecified
+            happenings.
+          </p>
           <FormFields>
             <StyledInput type="text" placeholder="(___) ___-____" />
             <input

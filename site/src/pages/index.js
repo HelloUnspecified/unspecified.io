@@ -24,7 +24,7 @@ const LogoContainer = styled.div`
   width: 60%;
   height: auto;
 
-  ${below.med`
+  ${below.larger`
     width: 80%;
   `};
 `
@@ -43,6 +43,7 @@ const Logos = styled.div`
   justify-content: center;
   margin-top: 5rem;
   position: relative;
+  padding: 0 7rem;
 `
 
 const AboutLogo = styled.img`
@@ -212,7 +213,7 @@ const IndexPage = ({ data }) => {
           backgroundColor: colors.navy,
         }}
       >
-        <ContentBlock id="blog" type="wide">
+        <ContentBlock id="blog" type="wide" side="right" topSpillOver>
           <CurrentPosts>
             {posts.map(post => (
               <BlogPostPreview post={post} />
@@ -228,7 +229,7 @@ const IndexPage = ({ data }) => {
           backgroundColor: colors.linen,
         }}
       >
-        <ContentBlock id="services">
+        <ContentBlock id="services" bottomSpillOver side="left">
           <h2>Services</h2>
           <ServicesList>
             {services.map(service => (

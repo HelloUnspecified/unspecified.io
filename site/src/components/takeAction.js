@@ -31,11 +31,15 @@ const TakeAction = () => {
         alignItems: "center",
       }}
     >
-      <h2 style={{ marginBottom: 0 }}>Chat With Us Now!</h2>
-      <p style={{ fontSize: "2rem" }}>
+      <h2 style={{ marginBottom: 0 }}>Sign Up!</h2>
+      <p>
+        To connect directly to us and be the first to hear all Unspecified
+        happenings.
+      </p>
+      {/* <p style={{ fontSize: "2rem" }}>
         Connect directly to us to chat, get word first as we deliver new
         products and content.
-      </p>
+      </p> */}
       <FormFields>
         <StyledInput type="text" placeholder="(___) ___-____" />
         <input
