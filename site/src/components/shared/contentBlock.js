@@ -153,7 +153,7 @@ const ContentBlock = ({
   type,
 }) => {
   const borderSettings = `${borderSize} solid ${colors[borderColor]}`
-  console.log("block", border, top, topSpillOver, type)
+
   return (
     <div id={id}>
       <Top>
