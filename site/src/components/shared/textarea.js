@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const TextInput = ({ field, label, name, type }) => {
+const Textarea = ({ field, label, name, rows }) => {
   const [hasFocus, setHasFocus] = useState(false)
 
   return (
@@ -8,10 +8,10 @@ const TextInput = ({ field, label, name, type }) => {
       <label for={field} className={hasFocus ? "active" : ""}>
         {label}
       </label>
-      <input
+      <textarea
         id={field}
         name={name}
-        type={type}
+        rows={rows}
         onFocus={e => {
           setHasFocus(true)
         }}
@@ -25,4 +25,4 @@ const TextInput = ({ field, label, name, type }) => {
   )
 }
 
-export default TextInput
+export default Textarea

@@ -11,13 +11,18 @@ const Top = styled.div`
 `
 
 const TopCurve = styled.div`
+  display: ${props =>
+    props.type === "short" && !props.displayBorder ? "none" : "flex"};
   min-height: 4rem;
   width: 100%;
-  display: flex;
   border-left: ${props =>
-    !props.top && props.side === "left" ? props.borderSettings : "none"};
+    props.displayBorder && props.side === "left"
+      ? props.borderSettings
+      : "none"};
   border-right: ${props =>
-    !props.top && props.side === "right" ? props.borderSettings : "none"};
+    props.displayBorder && props.side === "right"
+      ? props.borderSettings
+      : "none"};
 
   ${below.med`
     border: none;
@@ -62,9 +67,9 @@ const BorderedBlock = styled.div`
   max-width: ${props => (props.type === "wide" ? "100%" : "120rem")};
   border-top: none;
   border-left: ${props =>
-    props.side === "left" ? props.borderSettings : "none"};
+    props.side === "left" && props.border ? props.borderSettings : "none"};
   border-right: ${props =>
-    props.side === "right" ? props.borderSettings : "none"};
+    props.side === "right" && props.border ? props.borderSettings : "none"};
   border-bottom: none;
   position: relative;
   padding: ${props =>
@@ -94,12 +99,14 @@ const BottomPadding1 = styled.div`
   margin: 0 auto;
   flex-grow: 2;
   border-right: ${props =>
-    props.side === "right" ? props.borderSettings : "none"};
+    props.side === "right" && props.border ? props.borderSettings : "none"};
   border-left: ${props =>
-    props.side === "left" ? props.borderSettings : "none"};
-  border-bottom: ${props => props.borderSettings};
-  border-bottom-right-radius: ${props => (props.side === "right" ? "2rem" : 0)};
-  border-bottom-left-radius: ${props => (props.side === "left" ? "2rem" : 0)};
+    props.side === "left" && props.border ? props.borderSettings : "none"};
+  border-bottom: ${props => (props.border ? props.borderSettings : "none")};
+  border-bottom-right-radius: ${props =>
+    props.side === "right" && props.border ? "2rem" : 0};
+  border-bottom-left-radius: ${props =>
+    props.side === "left" && props.border ? "2rem" : 0};
 
   ${below.med`
     border: none;
@@ -110,14 +117,17 @@ const BottomPadding2 = styled.div`
   min-height: 4rem;
   margin: 0 auto;
   flex-grow: 2;
-  border-top: ${props => props.borderSettings};
+  border-top: ${props =>
+    props.bottomSpillOver ? "none" : props.borderSettings};
   border-right: ${props =>
     props.side === "left" ? props.borderSettings : "none"};
   border-left: ${props =>
     props.side === "right" ? props.borderSettings : "none"};
   border-bottom: none;
-  border-top-right-radius: ${props => (props.side === "left" ? "2rem" : 0)};
-  border-top-left-radius: ${props => (props.side === "right" ? "2rem" : 0)};
+  border-top-right-radius: ${props =>
+    props.side === "left" && !props.bottomSpillOver ? "2rem" : 0};
+  border-top-left-radius: ${props =>
+    props.side === "right" && !props.bottomSpillOver ? "2rem" : 0};
   position: relative;
   top: -0.3rem;
   margin-bottom: -0.6rem;
@@ -135,19 +145,24 @@ const ContentBlock = ({
   borderSize,
   bottom,
   bottomBlock,
+  bottomSpillOver,
   id,
   side,
   top,
+  topSpillOver,
   type,
 }) => {
-  const borderSettings = border
-    ? `${borderSize} solid ${colors[borderColor]}`
-    : "none"
-
+  const borderSettings = `${borderSize} solid ${colors[borderColor]}`
+  console.log("block", border, top, topSpillOver, type)
   return (
     <div id={id}>
       <Top>
-        <TopCurve top={top} side={side} borderSettings={borderSettings}>
+        <TopCurve
+          side={side}
+          borderSettings={borderSettings}
+          displayBorder={(border && !top) || topSpillOver}
+          type={type}
+        >
           {top && <div style={{ width: "2rem" }} />}
           {top && <TopPadding borderSettings={borderSettings} side={side} />}
           <div />
@@ -166,6 +181,8 @@ const ContentBlock = ({
         top={top}
         className={className}
         type={type}
+        bottomSpillOver={bottomSpillOver}
+        border={border}
       >
         {children}
       </BorderedBlock>
@@ -177,16 +194,18 @@ const ContentBlock = ({
           borderSize={borderSize}
           side={side}
           bottom={bottom}
+          border={border}
         ></BottomPadding1>
         {side === "left" && <div style={{ width: "2rem" }} />}
       </Bottom>
-      {border && (
+      {(border || bottomSpillOver) && (
         <Bottom>
           {side === "left" && <div style={{ width: "2rem" }} />}
           <BottomPadding2
             borderSettings={borderSettings}
             borderSize={borderSize}
             side={side}
+            bottomSpillOver={bottomSpillOver}
           ></BottomPadding2>
           {side === "right" && <div style={{ width: "2rem" }} />}
         </Bottom>
@@ -201,8 +220,10 @@ ContentBlock.propTypes = {
   borderSize: PropTypes.string,
   bottom: PropTypes.bool,
   bottomBlock: PropTypes.array,
+  bottomSpillOver: PropTypes.bool,
   side: PropTypes.string,
   top: PropTypes.bool,
+  topSpillOver: PropTypes.bool,
   type: PropTypes.string,
 }
 
@@ -210,10 +231,12 @@ ContentBlock.defaultProps = {
   border: false,
   borderSize: "0.3rem",
   borderColor: "gold",
+  bottomSpillOver: false,
   bottom: false,
   bottomBlock: [],
   side: "left",
   top: false,
+  topSpillOver: false,
   type: "regular",
 }
 
