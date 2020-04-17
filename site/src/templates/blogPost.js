@@ -26,7 +26,6 @@ const BlogPostTemplate = props => {
   const { data } = props
   const post = data && data.post
 
-  console.log("post", post)
   return (
     <Layout fixedHeader>
       <SEO title={`Unspecified - ${post.title}`} />

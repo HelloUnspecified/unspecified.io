@@ -38,7 +38,7 @@ const ContactForm = () => {
     }
     xhr.send(data)
   }
-  console.log("formstate", formState)
+
   if (formState === FORM_STATES.SUBMITTED) {
     return (
       <FormMessage>

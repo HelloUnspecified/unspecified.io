@@ -23,6 +23,7 @@ const Main = styled.div`
 const LogoContainer = styled.div`
   width: 60%;
   height: auto;
+  max-width: 120rem;
 
   ${below.larger`
     width: 80%;
@@ -141,7 +142,7 @@ const IndexPage = ({ data }) => {
   const bottomBlock = (
     <Peoples>
       {people.map(person => (
-        <PersonBlock>
+        <PersonBlock key={person.node.slug}>
           <PersonImage
             src={person.node.image.asset.url}
             alt={person.node.name}

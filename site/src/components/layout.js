@@ -10,6 +10,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { globalHistory } from "@reach/router"
 import { below, colors, socials } from "../utilities"
 import Header from "./header"
 import Icon from "./shared/icon"
@@ -91,6 +92,7 @@ const FooterTop = styled.div`
 `
 
 const Layout = ({ children, fixedHeader }) => {
+  const currentPath = globalHistory.location.pathname
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -110,7 +112,10 @@ const Layout = ({ children, fixedHeader }) => {
       <div>
         <main>{children}</main>
         <StyledFooter>
-          <ContentBlock side="left" topSpillOver>
+          <ContentBlock
+            side="left"
+            topSpillOver={currentPath === "/" ? true : false}
+          >
             <FooterTop>
               <div>
                 <LogoContainer>
@@ -119,20 +124,20 @@ const Layout = ({ children, fixedHeader }) => {
               </div>
               <div style={{ display: "flex", alignSelf: "center" }}>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Link to="#about">
+                  <a to="#about">
                     <NavText>About</NavText>
-                  </Link>
-                  <Link to="#blog">
+                  </a>
+                  <a to="#blog">
                     <NavText>Blog</NavText>
-                  </Link>
+                  </a>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <Link to="#services">
+                  <a to="#services">
                     <NavText>Services</NavText>
-                  </Link>
-                  <Link to="#contact">
+                  </a>
+                  <a to="#contact">
                     <NavText>Contact</NavText>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </FooterTop>
@@ -144,7 +149,11 @@ const Layout = ({ children, fixedHeader }) => {
               }}
             >
               {socials.map(social => (
-                <a href={social.url} style={{ padding: "0 1.25rem" }}>
+                <a
+                  href={social.url}
+                  style={{ padding: "0 1.25rem" }}
+                  key={social.icon}
+                >
                   <StyledIcon
                     icon={social.icon}
                     height={iconSize}

@@ -100,16 +100,16 @@ const Header = ({ fixedHeader }) => {
           <StyledLogo />
         </Link>
         <div style={{ flexGrow: 2 }} />
-        <Link to="#about">
+        <a href="#about">
           <NavText>About</NavText>
-        </Link>
-        <Link to="#blog">
+        </a>
+        <a href="#blog">
           <NavText>Blog</NavText>
-        </Link>
-        <Link to="#services">
+        </a>
+        <a href="#services">
           <NavText>Services</NavText>
-        </Link>
-        <Link to="#contact">
+        </a>
+        <a href="#contact">
           <StyledIcon
             icon="email"
             height="3rem"
@@ -117,7 +117,7 @@ const Header = ({ fixedHeader }) => {
             viewBoxWidth="24"
             viewBoxHeight="20"
           />
-        </Link>
+        </a>
       </HeaderContent>
     </StyledHeader>
   )

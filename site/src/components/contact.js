@@ -87,7 +87,7 @@ const Contact = () => {
         <h2>Stay In Touch</h2>
         <Socials>
           {socials.map(social => (
-            <IconBlock>
+            <IconBlock key={social.icon}>
               <a href={social.url}>
                 <StyledIcon
                   icon={social.icon}
