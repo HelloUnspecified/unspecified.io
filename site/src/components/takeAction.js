@@ -1,9 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
-
-const StyledInput = styled.input`
-  margin-right: 2rem;
-`
+import PhoneInput from "../components/shared/phoneInput"
+import { colors } from "../utilities"
 
 const FormFields = styled.div`
   display: flex;
@@ -21,6 +19,14 @@ const FormFields = styled.div`
   }
 `
 
+const SmsLink = styled.a`
+  color: ${colors.red};
+
+  &:hover {
+    color: ${colors.gold};
+  }
+`
+
 const TakeAction = () => {
   return (
     <div
@@ -31,17 +37,13 @@ const TakeAction = () => {
         alignItems: "center",
       }}
     >
-      <h2 style={{ marginBottom: 0 }}>Sign Up!</h2>
+      <h2 style={{ marginBottom: 0 }}>Join Our Community!</h2>
       <p>
-        To connect directly to us and be the first to hear all Unspecified
-        happenings.
+        Sign up to connect directly to us and be the first to hear all
+        Unspecified happenings.
       </p>
-      {/* <p style={{ fontSize: "2rem" }}>
-        Connect directly to us to chat, get word first as we deliver new
-        products and content.
-      </p> */}
       <FormFields>
-        <StyledInput type="text" placeholder="(___) ___-____" />
+        <PhoneInput />
         <input
           className="primary"
           type="submit"
@@ -49,6 +51,14 @@ const TakeAction = () => {
           style={{ margin: 0 }}
         />
       </FormFields>
+      <p
+        style={{ paddingTop: "3rem", fontSize: "2.4rem", textAlign: "center" }}
+      >
+        Chat with us TODAY! Text us at{" "}
+        <SmsLink href="sms://+13122734442" style={{ fontWeight: 600 }}>
+          (312) 273 4442
+        </SmsLink>
+      </p>
     </div>
   )
 }

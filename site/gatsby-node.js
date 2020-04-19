@@ -84,7 +84,6 @@ async function createPages(graphql, actions) {
   })
 
   legalPages.forEach(({ node }) => {
-    console.log("node----", node)
     createPage({
       path: node.frontmatter.path,
       component: legalPageTemplate,

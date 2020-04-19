@@ -155,7 +155,7 @@ const ContentBlock = ({
   const borderSettings = `${borderSize} solid ${colors[borderColor]}`
 
   return (
-    <div id={id}>
+    <div id={id} data-sal="fade">
       <Top>
         <TopCurve
           side={side}

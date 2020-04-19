@@ -7,6 +7,7 @@ import SEO from "../components/shared/seo"
 import BlogPostPreview from "../components/blogPostPreview"
 import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
+import Technologies from "../components/technologies"
 import { below, colors } from "../utilities"
 
 const Main = styled.div`
@@ -137,6 +138,7 @@ const IndexPage = ({ data }) => {
     people: { edges: people },
     posts: { edges: posts },
     services: { edges: services },
+    technologies: { edges: technologies },
   } = data
 
   const bottomBlock = (
@@ -222,6 +224,12 @@ const IndexPage = ({ data }) => {
           </CurrentPosts>
         </ContentBlock>
       </div>
+
+      {/* TECHNOLOGIES */}
+      <ContentBlock>
+        <h2>Innovation For A Better You</h2>
+        <Technologies technologies={technologies} />
+      </ContentBlock>
 
       {/* SERVICES */}
       <div
@@ -310,6 +318,18 @@ export const pageQuery = graphql`
             current
           }
           image {
+            asset {
+              url
+            }
+          }
+        }
+      }
+    }
+    technologies: allSanityTechnology {
+      edges {
+        node {
+          name
+          logo {
             asset {
               url
             }

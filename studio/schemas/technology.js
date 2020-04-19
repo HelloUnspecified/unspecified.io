@@ -1,6 +1,6 @@
 export default {
-  name: "logo",
-  title: "Logo",
+  name: "technology",
+  title: "Technology",
   type: "document",
   fields: [
     {
@@ -9,8 +9,13 @@ export default {
       type: "string",
     },
     {
-      name: "image",
-      title: "Image",
+      name: "description",
+      title: "Description",
+      type: "string",
+    },
+    {
+      name: "logo",
+      title: "Logo",
       type: "image",
       options: {
         hotspot: true,

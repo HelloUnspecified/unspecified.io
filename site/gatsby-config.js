@@ -22,6 +22,12 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-scroll-reveal`,
+      options: {
+        threshold: 0.25,
+      },
+    },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
