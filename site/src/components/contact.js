@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ContactForm from "./contactForm"
 import Icon from "./shared/icon"
+import SignUpForm from "./shared/singUpForm"
 import { below, colors, socials } from "../utilities"
 
 const iconSize = "5.5rem"
@@ -60,26 +61,6 @@ const Socials = styled.div`
   flex-grow: 2;
 `
 
-const StyledInput = styled.input`
-  margin-right: 2rem;
-`
-
-const FormFields = styled.div`
-  display: flex;
-
-  input {
-    height: 5rem;
-  }
-
-  input[type="text"] {
-    width: 50%;
-  }
-
-  input[type="submit"] {
-    padding: 0 3rem;
-  }
-`
-
 const Contact = () => {
   return (
     <ContactSection>
@@ -100,6 +81,18 @@ const Contact = () => {
               <p>{social.description}</p>
             </IconBlock>
           ))}
+          <IconBlock>
+            <a href="sms:+13122734442">
+              <StyledIcon
+                icon="sms"
+                height={iconSize}
+                width={iconSize}
+                viewBoxWidth="100"
+                viewBoxHeight="64"
+              />
+            </a>
+            <p>Message us anytime, we'd love to hear from you!</p>
+          </IconBlock>
         </Socials>
         <div style={{ alignSelf: "flex-end", width: "100%" }}>
           <h2 style={{ marginBottom: 0, paddingTop: "4rem" }}>Sign Up!</h2>
@@ -107,15 +100,7 @@ const Contact = () => {
             To connect directly to us and be the first to hear all Unspecified
             happenings.
           </p>
-          <FormFields>
-            <StyledInput type="text" placeholder="(___) ___-____" />
-            <input
-              className="primary"
-              type="submit"
-              value="Sign me up!"
-              style={{ margin: 0 }}
-            />
-          </FormFields>
+          <SignUpForm />
         </div>
       </Block>
       <Block>

@@ -46,6 +46,10 @@ const Logos = styled.div`
   margin-top: 5rem;
   position: relative;
   padding: 0 7rem;
+
+  ${below.small`
+    padding: 0;
+  `};
 `
 
 const AboutLogo = styled.img`

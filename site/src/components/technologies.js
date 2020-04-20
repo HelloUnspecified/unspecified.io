@@ -4,9 +4,19 @@ import Cloud from "./shared/svgs/cloud"
 import Device from "./shared/svgs/device"
 import Mobile from "./shared/svgs/mobile"
 import Website from "./shared/svgs/website"
-import { colors } from "../utilities"
+import { below, colors } from "../utilities"
 
 const PLATFORM_ICON_SIZE = "8rem"
+
+const PlatformList = styled.div`
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-evenly;
+
+  ${below.small`
+    flex-wrap: wrap;
+  `};
+`
 
 const Platform = styled.div`
   width: 15rem;
@@ -43,13 +53,7 @@ const Technologies = ({ technologies }) => {
         make experiences better. To bring you and your business more closely
         connected to your customer across all the platforms you operate on.
       </p>
-      <div
-        style={{
-          display: "flex",
-          marginTop: "3rem",
-          justifyContent: "space-evenly",
-        }}
-      >
+      <PlatformList>
         <Platform key="website">
           <Website
             height={PLATFORM_ICON_SIZE}
@@ -83,7 +87,7 @@ const Technologies = ({ technologies }) => {
           />
           <p>Cloud</p>
         </Platform>
-      </div>
+      </PlatformList>
       <TechnologyBlock>
         <p style={{ lineHeight: "1.9" }}>
           Always reaching for the right tool for job we are constantly pushing
