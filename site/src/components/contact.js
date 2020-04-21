@@ -61,6 +61,15 @@ const Socials = styled.div`
   flex-grow: 2;
 `
 
+const SmsLink = styled.a`
+  color: ${colors.red};
+  font-weight: 800;
+
+  &:hover {
+    color: ${colors.gold};
+  }
+`
+
 const Contact = () => {
   return (
     <ContactSection>
@@ -91,17 +100,21 @@ const Contact = () => {
                 viewBoxHeight="64"
               />
             </a>
-            <p>Message us anytime, we'd love to hear from you!</p>
+            <p>
+              Message us anytime at{" "}
+              <SmsLink href="sms:+13122734442">(312) 273-4442</SmsLink>, we'd
+              love to hear from you!
+            </p>
           </IconBlock>
         </Socials>
-        <div style={{ alignSelf: "flex-end", width: "100%" }}>
+        {/* <div style={{ alignSelf: "flex-end", width: "100%" }}>
           <h2 style={{ marginBottom: 0, paddingTop: "4rem" }}>Sign Up!</h2>
           <p>
             To connect directly to us and be the first to hear all Unspecified
             happenings.
           </p>
           <SignUpForm />
-        </div>
+        </div> */}
       </Block>
       <Block>
         <h2 style={{ marginBottom: 0, paddingBottom: 0 }}>Get In Touch</h2>

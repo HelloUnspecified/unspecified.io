@@ -40,9 +40,11 @@ const TechnologyBlock = styled.div`
 `
 
 const TechnologyLogo = styled.img`
-  height: 6rem;
+  max-height: 6rem;
   width: auto;
   margin: 1rem 2rem;
+  max-width: 15rem;
+  object-fit: contain;
 `
 
 const Technologies = ({ technologies }) => {
@@ -99,6 +101,7 @@ const Technologies = ({ technologies }) => {
           <TechnologyLogo
             src={technology.node.logo.asset.url}
             key={technology.node.name}
+            tooltip={technology.node.name}
           />
         ))}
       </TechnologyBlock>
