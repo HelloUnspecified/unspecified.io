@@ -60,7 +60,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`coda:400,800`, `lato:400`],
+        fonts: [`coda:400,800`, `lato:400,800`],
         display: "swap",
       },
     },

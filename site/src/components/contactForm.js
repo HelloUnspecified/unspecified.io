@@ -66,7 +66,7 @@ const ContactForm = () => {
           name="_message"
           id="email-message"
           label="Enter your message."
-          rows="10"
+          rows="6"
         />
 
         <input

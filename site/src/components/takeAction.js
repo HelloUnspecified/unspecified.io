@@ -5,6 +5,7 @@ import { colors } from "../utilities"
 
 const SmsLink = styled.a`
   color: ${colors.red};
+  font-weight: 800;
 
   &:hover {
     color: ${colors.gold};
@@ -21,19 +22,21 @@ const TakeAction = () => {
         alignItems: "center",
       }}
     >
-      <h2 style={{ marginBottom: 0 }}>Join Our Community!</h2>
-      <p>
-        Sign up to connect directly to us and be the first to hear all
-        Unspecified happenings.
+      <h2 style={{ marginBottom: 0 }}>Let's Chat!</h2>
+      <p style={{ fontSize: "2.2rem" }}>
+        Greetings, questions, conversations... you name it, we'd love to hear
+        from you!
       </p>
-      <SignUpForm />
+      {/* <SignUpForm /> */}
       <p
-        style={{ paddingTop: "3rem", fontSize: "2.4rem", textAlign: "center" }}
+        style={{
+          paddingTop: "0.25rem",
+          fontSize: "2.4rem",
+          textAlign: "center",
+        }}
       >
-        Chat with us TODAY! Text us at{" "}
-        <SmsLink href="sms:+13122734442" style={{ fontWeight: 600 }}>
-          (312) 273 4442
-        </SmsLink>
+        Message us directly at{"  "}
+        <SmsLink href="sms:+13122734442">(312) 273-4442</SmsLink>
       </p>
     </div>
   )
