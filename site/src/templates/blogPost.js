@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import BlockContent from "../components/shared/blockContent"
 import ContentBlock from "../components/shared/contentBlock"
+import ReactMarkdown from "react-markdown"
 import SEO from "../components/shared/seo"
 import Layout from "../components/layout"
 import moment from "moment"
@@ -38,7 +38,7 @@ const BlogPostTemplate = props => {
             <Category key={category._id}>{category.title}</Category>
           ))}
         </CategoryList>
-        {post._rawBody && <BlockContent blocks={post._rawBody} />}
+        {post.body && <ReactMarkdown source={post.body} />}
       </ContentBlock>
     </Layout>
   )
@@ -61,7 +61,7 @@ export const query = graphql`
         }
       }
       title
-      _rawBody(resolveReferences: { maxDepth: 5 })
+      body
       slug {
         current
       }
