@@ -6,7 +6,7 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
     },
     {
       name: "slug",
@@ -14,57 +14,60 @@ export default {
       type: "slug",
       options: {
         source: "title",
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: "person",
       title: "Author",
       type: "reference",
-      to: { type: "person" }
+      to: { type: "person" },
     },
     {
       name: "mainImage",
       title: "Main image",
       type: "image",
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "category" } }]
+      of: [{ type: "reference", to: { type: "category" } }],
     },
     {
       name: "publishedAt",
       title: "Published at",
-      type: "datetime"
+      type: "datetime",
     },
     {
       name: "shortDescription",
       title: "Short Description",
-      type: "string"
+      type: "string",
     },
     {
       name: "body",
       title: "Body",
-      type: "blockContent"
-    }
+      type: "markdown",
+      options: {
+        minRows: 20,
+      },
+    },
   ],
 
   preview: {
     select: {
       title: "title",
       author: "author.name",
-      media: "mainImage"
+      media: "mainImage",
     },
     prepare(selection) {
       const { author } = selection;
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
+        subtitle: author && `by ${author}`,
       });
-    }
-  }
+    },
+  },
 };
