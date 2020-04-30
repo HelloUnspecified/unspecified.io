@@ -6,7 +6,7 @@ import ContentBlock from "../components/shared/contentBlock"
 import Icon from "../components/shared/icon"
 import SEO from "../components/shared/seo"
 import Layout from "../components/layout"
-import { colors, socials } from "../utilities"
+import { below, colors, socials } from "../utilities"
 
 const SOCIALS = ["linkedIn", "github", "facebook", "twitter", "instagram"]
 const ICON_SIZE = "3.5rem"
@@ -24,6 +24,10 @@ const NameBlock = styled.div`
   width: 100%;
   justify-content: space-between;
   margin-top: 8rem;
+
+  ${below.med`
+    flex-direction: column;
+  `}
 `
 
 const PersonImage = styled.img`
@@ -52,6 +56,7 @@ const Quote = styled.p`
   font-size: 2.1rem;
   margin-top: 2rem;
   color: ${colors.navy};
+  word-wrap: break-word;
 `
 
 const Images = styled.div`
@@ -66,7 +71,7 @@ const ProfileImage = styled.img`
   max-height: 28rem;
   object-fit: cover;
   margin-top: 1rem;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
 `
 
 const PersonTemplate = props => {
