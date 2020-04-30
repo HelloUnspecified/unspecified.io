@@ -148,21 +148,36 @@ const Layout = ({ children, fixedHeader }) => {
                 paddingBottom: "6rem",
               }}
             >
-              {socials.map(social => (
-                <a
-                  href={social.url}
-                  style={{ padding: "0 1.25rem" }}
-                  key={social.icon}
-                >
-                  <StyledIcon
-                    icon={social.icon}
-                    height={iconSize}
-                    width={iconSize}
-                    viewBoxWidth={social.viewbox.width}
-                    viewBoxHeight={social.viewbox.height}
-                  />
-                </a>
-              ))}
+              {socials
+                .filter(social => social.url !== undefined)
+                .map(social => (
+                  <a
+                    href={social.url}
+                    style={{ padding: "0 1.25rem" }}
+                    key={social.icon}
+                  >
+                    <StyledIcon
+                      icon={social.icon}
+                      height={iconSize}
+                      width={iconSize}
+                      viewBoxWidth={social.viewbox.width}
+                      viewBoxHeight={social.viewbox.height}
+                    />
+                  </a>
+                ))}
+              <a
+                href="sms:+13122734442"
+                style={{ padding: "0 1.25rem" }}
+                key="sms"
+              >
+                <StyledIcon
+                  icon="sms"
+                  height={iconSize}
+                  width={iconSize}
+                  viewBoxWidth="100"
+                  viewBoxHeight="64"
+                />
+              </a>
             </div>
             <div
               style={{

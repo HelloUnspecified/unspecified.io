@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Logo from "../components/shared/logo"
 import ContentBlock from "../components/shared/contentBlock"
@@ -69,7 +70,7 @@ const Peoples = styled.div`
   `};
 `
 
-const PersonBlock = styled.div`
+const PersonBlock = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,7 +149,10 @@ const IndexPage = ({ data }) => {
   const bottomBlock = (
     <Peoples>
       {people.map(person => (
-        <PersonBlock key={person.node.slug}>
+        <PersonBlock
+          key={person.node.slug.current}
+          to={`/${person.node.slug.current}`}
+        >
           <PersonImage
             src={person.node.image.asset.url}
             alt={person.node.name}
@@ -329,7 +333,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    technologies: allSanityTechnology {
+    technologies: allSanityTechnology(
+      filter: { displayOnLanding: { eq: true } }
+    ) {
       edges {
         node {
           name
