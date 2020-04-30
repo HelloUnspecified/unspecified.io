@@ -34,15 +34,33 @@ export default {
     {
       name: "bio",
       title: "Bio",
+      type: "markdown",
+      options: {
+        minRows: 20,
+      },
+    },
+    {
+      name: "experience",
+      title: "Experience",
       type: "array",
-      of: [
-        {
-          title: "Block",
-          type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
-          lists: [],
-        },
-      ],
+      of: [{ type: "jobExperience" }],
+    },
+    {
+      name: "education",
+      title: "Education",
+      type: "array",
+      of: [{ type: "education" }],
+    },
+    {
+      name: "speaking",
+      title: "Speaking",
+      type: "array",
+      of: [{ type: "speaking" }],
+    },
+    {
+      name: "quote",
+      title: "Quote",
+      type: "string",
     },
     {
       name: "listingOrder",
@@ -78,6 +96,19 @@ export default {
       title: "Twitter",
       type: "string",
       fieldset: "social",
+    },
+    {
+      name: "profileImages",
+      title: "Profile Images",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     },
   ],
   preview: {

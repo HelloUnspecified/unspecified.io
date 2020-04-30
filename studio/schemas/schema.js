@@ -7,10 +7,14 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 // We import object and document schemas
 import blockContent from "./blockContent";
 import category from "./category";
+import education from "./education";
+import jobExperience from "./jobExperience";
 import logo from "./logo";
 import post from "./post";
 import person from "./person";
 import service from "./service";
+import speaking from "./speaking";
+import speakingEvent from "./speakingEvent";
 import technology from "./technology";
 import testimonial from "./testimonial";
 
@@ -24,15 +28,18 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     category,
+    education,
+    jobExperience,
     logo,
     post,
     person,
     service,
+    speaking,
+    speakingEvent,
     technology,
     testimonial,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
-    markdown,
   ]),
 });

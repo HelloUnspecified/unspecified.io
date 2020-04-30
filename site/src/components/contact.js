@@ -5,7 +5,7 @@ import Icon from "./shared/icon"
 import SignUpForm from "./shared/singUpForm"
 import { below, colors, socials } from "../utilities"
 
-const iconSize = "5.5rem"
+const ICON_SIZE = "5.5rem"
 
 const ContactSection = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const IconBlock = styled.div`
 const StyledIcon = styled(Icon)`
   fill: ${colors.red};
   padding-right: 1rem;
-  width: ${iconSize};
+  width: ${ICON_SIZE};
 
   &:hover {
     fill: ${colors.gold};
@@ -76,26 +76,28 @@ const Contact = () => {
       <Block>
         <h2>Stay In Touch</h2>
         <Socials>
-          {socials.map(social => (
-            <IconBlock key={social.icon}>
-              <a href={social.url}>
-                <StyledIcon
-                  icon={social.icon}
-                  height={iconSize}
-                  width={iconSize}
-                  viewBoxWidth={social.viewbox.width}
-                  viewBoxHeight={social.viewbox.height}
-                />
-              </a>
-              <p>{social.description}</p>
-            </IconBlock>
-          ))}
+          {socials
+            .filter(social => social.url !== undefined)
+            .map(social => (
+              <IconBlock key={social.icon}>
+                <a href={social.url}>
+                  <StyledIcon
+                    icon={social.icon}
+                    height={ICON_SIZE}
+                    width={ICON_SIZE}
+                    viewBoxWidth={social.viewbox.width}
+                    viewBoxHeight={social.viewbox.height}
+                  />
+                </a>
+                <p>{social.description}</p>
+              </IconBlock>
+            ))}
           <IconBlock>
             <a href="sms:+13122734442">
               <StyledIcon
                 icon="sms"
-                height={iconSize}
-                width={iconSize}
+                height={ICON_SIZE}
+                width={ICON_SIZE}
                 viewBoxWidth="100"
                 viewBoxHeight="64"
               />

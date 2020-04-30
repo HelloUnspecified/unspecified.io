@@ -21,5 +21,19 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: "displayOnLanding",
+      title: "Display on Landing",
+      type: "boolean",
+    },
   ],
+  preview: {
+    select: {
+      title: "name",
+      media: "logo",
+    },
+  },
+  initialValue: {
+    displayOnLanding: true,
+  },
 };

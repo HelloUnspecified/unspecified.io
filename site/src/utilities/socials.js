@@ -11,6 +11,7 @@ export const socials = [
   {
     icon: "linkedIn",
     url: "https://www.linkedin.com/company/unspecified-software-co",
+    rootMemberUrl: "https://www.linkedin.com/in/",
     description:
       "Where we drop all our business, leadership and management tips",
     viewbox: {
@@ -21,6 +22,7 @@ export const socials = [
   {
     icon: "facebook",
     url: "https://www.facebook.com/unspecifiedsoftware",
+    rootMemberUrl: "https://www.facebook.com/",
     description:
       "Engaging directly with our clients and sharing our Unspecified life",
     viewbox: {
@@ -31,6 +33,7 @@ export const socials = [
   {
     icon: "github",
     url: "https://github.com/HelloUnspecified",
+    rootMemberUrl: "https://github.com/",
     description:
       "We're an open book, literally, all Unspecified products are open source",
     viewbox: {
@@ -46,6 +49,22 @@ export const socials = [
     viewbox: {
       height: 26,
       width: 40,
+    },
+  },
+  {
+    icon: "instagram",
+    rootMemberUrl: "https://www.instagram.com/",
+    viewbox: {
+      height: 24,
+      width: 24,
+    },
+  },
+  {
+    icon: "twitter",
+    rootMemberUrl: "https://twitter.com/",
+    viewbox: {
+      height: 24,
+      width: 24,
     },
   },
 ]
