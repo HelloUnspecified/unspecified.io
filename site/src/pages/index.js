@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Loadable from "@loadable/component"
 import Layout from "../components/layout"
 import Logo from "../components/shared/logo"
 import ContentBlock from "../components/shared/contentBlock"
@@ -10,8 +11,6 @@ import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
 import Technologies from "../components/technologies"
 import { below, colors } from "../utilities"
-
-import ReactTwitchEmbedVideo from "react-twitch-embed-video"
 
 const Main = styled.div`
   height: 60vh;
@@ -139,6 +138,8 @@ const CurrentPosts = styled.div`
   `};
 `
 
+const EmbedTwitchVideo = Loadable(() => import("../components/twitchVideo"))
+
 const IndexPage = ({ data }) => {
   const {
     logos: { edges: logos },
@@ -261,17 +262,7 @@ const IndexPage = ({ data }) => {
         </ContentBlock>
       </div>
 
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: colors.navy,
-        }}
-      >
-        <ContentBlock bottomSpillOver side="left">
-          <h2 style={{ color: "white" }}>Watch Us Live</h2>
-          <ReactTwitchEmbedVideo channel="unspecifiedsoftware" width="100%" />
-        </ContentBlock>
-      </div>
+      <EmbedTwitchVideo />
 
       {/* CONTACT FORM */}
       <ContentBlock id="contact" border bottom side="right">
