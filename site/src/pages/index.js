@@ -138,7 +138,9 @@ const CurrentPosts = styled.div`
   `};
 `
 
-const EmbedTwitchVideo = Loadable(() => import("../components/twitchVideo"))
+const EmbedTwitchVideo = Loadable(() => import("../components/twitchVideo"), {
+  ssr: false,
+})
 
 const IndexPage = ({ data }) => {
   const {
