@@ -11,6 +11,8 @@ import TakeAction from "../components/takeAction"
 import Technologies from "../components/technologies"
 import { below, colors } from "../utilities"
 
+import ReactTwitchEmbedVideo from "react-twitch-embed-video"
+
 const Main = styled.div`
   height: 60vh;
   width: 100vw;
@@ -246,7 +248,7 @@ const IndexPage = ({ data }) => {
           backgroundColor: colors.linen,
         }}
       >
-        <ContentBlock id="services" bottomSpillOver side="left">
+        <ContentBlock id="services">
           <h2>Services</h2>
           <ServicesList>
             {services.map(service => (
@@ -256,6 +258,18 @@ const IndexPage = ({ data }) => {
               </Service>
             ))}
           </ServicesList>
+        </ContentBlock>
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          backgroundColor: colors.navy,
+        }}
+      >
+        <ContentBlock bottomSpillOver side="left">
+          <h2 style={{ color: "white" }}>Watch Us Live</h2>
+          <ReactTwitchEmbedVideo channel="unspecifiedsoftware" width="100%" />
         </ContentBlock>
       </div>
 
