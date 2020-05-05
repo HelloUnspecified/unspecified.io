@@ -2,16 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
-import Logo from "../components/shared/logo"
 import ContentBlock from "../components/shared/contentBlock"
 import SEO from "../components/shared/seo"
 import BlogPostPreview from "../components/blogPostPreview"
 import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
 import Technologies from "../components/technologies"
+import TwitchVideo from "../components/twitchVideo"
 import { below, colors } from "../utilities"
-
-import ReactTwitchEmbedVideo from "react-twitch-embed-video"
 
 const Main = styled.div`
   height: 60vh;
@@ -261,17 +259,7 @@ const IndexPage = ({ data }) => {
         </ContentBlock>
       </div>
 
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: colors.navy,
-        }}
-      >
-        <ContentBlock bottomSpillOver side="left">
-          <h2 style={{ color: "white" }}>Watch Us Live</h2>
-          <ReactTwitchEmbedVideo channel="unspecifiedsoftware" width="100%" />
-        </ContentBlock>
-      </div>
+      <TwitchVideo />
 
       {/* CONTACT FORM */}
       <ContentBlock id="contact" border bottom side="right">
