@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import Loadable from "@loadable/component"
+// import loadable from "@loadable/component"
 import Layout from "../components/layout"
 import Logo from "../components/shared/logo"
 import ContentBlock from "../components/shared/contentBlock"
@@ -10,6 +10,7 @@ import BlogPostPreview from "../components/blogPostPreview"
 import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
 import Technologies from "../components/technologies"
+import TwitchVideo from "../components/twitchVideo"
 import { below, colors } from "../utilities"
 
 const Main = styled.div`
@@ -138,9 +139,7 @@ const CurrentPosts = styled.div`
   `};
 `
 
-const EmbedTwitchVideo = Loadable(() => import("../components/twitchVideo"), {
-  ssr: false,
-})
+// const TwitchVideo = loadable(() => import("../components/twitchVideo"))
 
 const IndexPage = ({ data }) => {
   const {
@@ -264,7 +263,7 @@ const IndexPage = ({ data }) => {
         </ContentBlock>
       </div>
 
-      <EmbedTwitchVideo />
+      <TwitchVideo />
 
       {/* CONTACT FORM */}
       <ContentBlock id="contact" border bottom side="right">
