@@ -1,9 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-// import loadable from "@loadable/component"
 import Layout from "../components/layout"
-import Logo from "../components/shared/logo"
 import ContentBlock from "../components/shared/contentBlock"
 import SEO from "../components/shared/seo"
 import BlogPostPreview from "../components/blogPostPreview"
@@ -138,8 +136,6 @@ const CurrentPosts = styled.div`
     align-items: center;
   `};
 `
-
-// const TwitchVideo = loadable(() => import("../components/twitchVideo"))
 
 const IndexPage = ({ data }) => {
   const {

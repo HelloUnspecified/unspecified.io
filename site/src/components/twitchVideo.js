@@ -1,6 +1,5 @@
 import React from "react"
 import loadable from "@loadable/component"
-// import ReactTwitchEmbedVideo from "react-twitch-embed-video"
 import ContentBlock from "./shared/contentBlock"
 import styled from "styled-components"
 import { colors } from "../utilities"
@@ -9,7 +8,6 @@ const StyleH2 = styled.h2`
   color: ${colors.white};
 `
 
-// const ReactTwitchEmbedVideo = loadable(() => import("react-twitch-embed-video"))
 const ReactTwitchEmbedVideo = loadable(
   () => import("react-twitch-embed-video"),
   { ssr: false }
