@@ -38,6 +38,8 @@ module.exports = {
         background_color: `#242E3C`,
         theme_color: `#242E3C`,
         display: `minimal-ui`,
+        include_favicon: true,
+        icon: 'static/icons/512x512.png',
         icons: [
           {
             src: `/icons/16x16.png`,

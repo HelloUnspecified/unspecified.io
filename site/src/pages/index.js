@@ -10,6 +10,7 @@ import TakeAction from "../components/takeAction"
 import Technologies from "../components/technologies"
 import TwitchVideo from "../components/twitchVideo"
 import { below, colors } from "../utilities"
+import { graphql } from 'gatsby'
 
 const Main = styled.div`
   height: 60vh;
