@@ -1,14 +1,30 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "unspecified",
+  "description": "the unspecified.io website",
+  "homepage": "https://unspecified.io",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelloUnspecified/unspecified.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HelloUnspecified/unspecified.io/issues"
+  },
+  "contributors": [
+    {
+      "name": "Clark Sell",
+      "email": "hello@unspecified.io"
+    },
+    {
+      "name": "Sara Gibbons",
+      "email": "sara@unspecified.io"
+    }
+  ],
   "dependencies": {
     "@loadable/component": "^5.12.0",
     "@sanity/block-content-to-react": "^2.0.7",
     "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.19.45",
+    "gatsby": "^2.21.20",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-google-analytics": "^2.2.2",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -36,7 +52,8 @@
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "react"
   ],
   "license": "MIT",
   "scripts": {
@@ -45,14 +62,6 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "clean": "gatsby clean"
   }
 }
