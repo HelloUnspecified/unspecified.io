@@ -38,35 +38,34 @@ module.exports = {
         background_color: `#242E3C`,
         theme_color: `#242E3C`,
         display: `minimal-ui`,
-        // icon: `static/icons/512x512.png`,
         icons: [
           {
-            src: `static/icons/16x16.png`,
+            src: `/icons/16x16.png`,
             sizes: `16x16`,
             type: `image/png`,
           },
           {
-            src: `static/icons/32x32.png`,
+            src: `/icons/32x32.png`,
             sizes: `32x32`,
             type: `image/png`,
           },
           {
-            src: `static/icons/96x96.png`,
+            src: `/icons/96x96.png`,
             sizes: `96x96`,
             type: `image/png`,
           },
           {
-            src: `static/icons/128x128.png`,
+            src: `/icons/128x128.png`,
             sizes: `128x128`,
             type: `image/png`,
           },
           {
-            src: `static/icons/256x256.png`,
+            src: `/icons/256x256.png`,
             sizes: `256x256`,
             type: `image/png`,
           },
           {
-            src: `static/icons/512x512.png`,
+            src: `/icons/512x512.png`,
             sizes: `512x512`,
             type: `image/png`,
           },
