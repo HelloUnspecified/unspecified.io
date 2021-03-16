@@ -1,11 +1,5 @@
-.env
-
-.DS_Store
-/node_modules/
-/src/node_modules/@sapper/
 yarn-error.log
 /cypress/screenshots/
-/__sapper__/
 
 # Logs
 logs
@@ -25,15 +19,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
 
 # node-waf configuration
 .lock-wscript
@@ -62,3 +47,13 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+
+
+.DS_Store
+node_modules
+/.svelte
+/build
+/functions
+
+
+.env

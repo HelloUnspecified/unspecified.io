@@ -1,0 +1,44 @@
+{
+	"name": "unspecified",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "svelte-kit dev",
+		"build": "svelte-kit build",
+		"start": "svelte-kit start"
+	},
+	"devDependencies": {
+		"@fullhuman/postcss-purgecss": "^4.0.2",
+		"@sveltejs/adapter-node": "next",
+		"@sveltejs/kit": "next",
+		"@svitejs/vite-plugin-svelte": "^0.11.0",
+		"@tailwindcss/aspect-ratio": "^0.2.0",
+		"@tailwindcss/forms": "^0.2.1",
+		"@tailwindcss/typography": "^0.4.0",
+		"@tailwindcss/ui": "^0.7.2",
+		"autoprefixer": "^10.2.5",
+		"cssnano": "^4.1.10",
+		"eslint": "^7.22.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-config-prettier": "^8.1.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jest": "^24.3.1",
+		"eslint-plugin-prettier": "^3.3.1",
+		"eslint-plugin-svelte3": "^3.1.2",
+		"postcss": "^8.2.8",
+		"postcss-cli": "^8.3.1",
+		"postcss-load-config": "^3.0.1",
+		"prettier": "^2.2.1",
+		"prettier-eslint": "^12.0.0",
+		"prettier-eslint-cli": "^5.0.1",
+		"prettier-plugin-svelte": "^2.2.0",
+		"svelte": "^3.35.0",
+		"svelte-preprocess": "^4.6.9",
+		"tailwindcss": "^2.0.3",
+		"tailwindcss-font-inter": "^2.0.2",
+		"vite": "^2.1.0"
+	},
+	"type": "module",
+	"engines": {
+		"node": ">= 14.6.0"
+	}
+}
