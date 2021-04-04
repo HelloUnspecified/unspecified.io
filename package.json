@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^4.0.3",
-		"@sveltejs/adapter-netlify": "^1.0.0-next.0",
+		"@sveltejs/adapter-netlify": "next",
 		"@sveltejs/adapter-node": "next",
 		"@sveltejs/kit": "next",
 		"@svitejs/vite-plugin-svelte": "^0.11.1",

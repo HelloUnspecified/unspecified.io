@@ -1,6 +1,6 @@
 devDependencies:
   '@fullhuman/postcss-purgecss': 4.0.3_postcss@8.2.9
-  '@sveltejs/adapter-netlify': 1.0.0-next.0
+  '@sveltejs/adapter-netlify': 1.0.0-next.4
   '@sveltejs/adapter-node': 1.0.0-next.12
   '@sveltejs/kit': 1.0.0-next.71_svelte@3.37.0+vite@2.1.5
   '@svitejs/vite-plugin-svelte': 0.11.1_svelte@3.37.0+vite@2.1.5
@@ -122,12 +122,12 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==
-  /@sveltejs/adapter-netlify/1.0.0-next.0:
+  /@sveltejs/adapter-netlify/1.0.0-next.4:
     dependencies:
       toml: 3.0.0
     dev: true
     resolution:
-      integrity: sha512-CxjWlGkNyQzEB9LsXN+MvF1Z+SHRb16cNZL8sy5bUcytDcf7ETjlgKdaxks7ygWBhI/wtx4Mcxr+uIt50p8vag==
+      integrity: sha512-kY3tRvnVR0MDOu+8UIgCRrJRkVj4/eQyqdcSm0K06NW8/1QIuVDYE+YZU1IZo4SDYRLeq+/md1UeaaqXBpx8NA==
   /@sveltejs/adapter-node/1.0.0-next.12:
     dev: true
     resolution:
@@ -4534,7 +4534,7 @@ packages:
       integrity: sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
 specifiers:
   '@fullhuman/postcss-purgecss': ^4.0.3
-  '@sveltejs/adapter-netlify': ^1.0.0-next.0
+  '@sveltejs/adapter-netlify': next
   '@sveltejs/adapter-node': next
   '@sveltejs/kit': next
   '@svitejs/vite-plugin-svelte': ^0.11.1
