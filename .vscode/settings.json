@@ -13,8 +13,7 @@
     "statusBar.border": "#242e3c",
     "titleBar.border": "#242e3c"
   },
-  "peacock.affectActivityBar": false,
-  "peacock.color": "#242E3C",
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }
