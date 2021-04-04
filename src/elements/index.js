@@ -1,2 +1,2 @@
-export { default as Title } from './Title.svelte';
+export { default as Title } from './_Title.svelte';
 export { default as Layouts } from './layouts';

@@ -43,10 +43,7 @@ module.exports = {
     },
   },
 	plugins: [
-    require('tailwindcss-font-inter')({
-      importFontFace: true,
-      disableUnusedFeatures: true,
-    }),
+		require('@tailwindcss/line-clamp'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/ui'),

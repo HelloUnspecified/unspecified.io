@@ -1,12 +1,12 @@
 <script>
-  import LetsChat from '$components/root/LetsChat.svelte';
-  import OurTeam from '$components/root/OurTeam.svelte';
-  import BlogHighlights from '$components/root/BlogHighlights.svelte';
-  import LogoCloud from '$components/root/LogoCloud.svelte';
-  import Hero from '$components/root/Hero.svelte';
-  import Services from '$components/root/Services.svelte';
-  import Contact from '$components/root/Contact.svelte';
-  import CTA from '$components/root/Mission.svelte';
+  import LetsChat from '$components/root/_LetsChat.svelte';
+  import OurTeam from '$components/root/_OurTeam.svelte';
+  import BlogHighlights from '$components/root/_BlogHighlights.svelte';
+  import LogoCloud from '$components/root/_LogoCloud.svelte';
+  import Hero from '$components/root/_Hero.svelte';
+  import Services from '$components/root/_Services.svelte';
+  import Contact from '$components/root/_Contact.svelte';
+  import CTA from '$components/root/_Mission.svelte';
 </script>
 
 <div>
