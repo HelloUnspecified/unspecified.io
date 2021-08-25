@@ -35,15 +35,15 @@
       <div
         class="relative max-w-md mx-auto py-12 px-4 space-y-6 sm:max-w-3xl sm:py-16 sm:px-6 lg:max-w-none lg:p-0 lg:col-start-4 lg:col-span-6">
         <p class="text-xl text-white leading-relaxed">
-          At Unspecified, we build product that builds communities. We’re a
-          small, proud, hard working boutique software development shop who’s
+          At Unspecified, we build products that build communities. We’re a
+          small, proud, hard-working boutique software development shop whose
           passion for software development and people have converged. It’s our
-          mission to create software that connects people in a deeper, more
-          meaningful way. We build websites, we build devices, we build services
-          to support business, we make software to support people. We also
-          provide a few consulting services for business in need of senior level
-          development experiences. Executive coaching, architecture and product
-          design, delivery management, and training.
+          mission to create software that connects people in a more profound,
+          more meaningful way. We build websites; we build devices; we build
+          services to support business; we make software to help people. We also
+          provide a few consulting services for companies in need of
+          senior-level development experiences. Executive coaching, architecture
+          and product design, delivery management, and training.
         </p>
       </div>
     </div>

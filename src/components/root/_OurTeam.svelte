@@ -2,9 +2,8 @@
   import { fade } from 'svelte/transition';
 
   import { Title } from '$elements';
-  import TeamMember from './components/OurTeam/_TeamMember.svelte';
-
-  const persons = [1, 2];
+  import TeamMember from './_components/OurTeam/_TeamMember.svelte';
+  import teamData from '$utils/teamData';
 </script>
 
 <div>
@@ -24,9 +23,9 @@
       <div class="lg:col-span-2">
         <ul
           class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8">
-          {#each persons as person, index}
+          {#each Object.keys(teamData) as person, index}
             <li in:fade="{{ delay: index * 600 }}">
-              <TeamMember />
+              <TeamMember member="{teamData[person]}" />
             </li>
           {/each}
         </ul>

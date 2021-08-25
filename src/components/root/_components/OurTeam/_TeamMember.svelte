@@ -1,25 +1,22 @@
+<script>
+  export let member;
+</script>
+
 <div
   class="space-y-4 p-6 rounded-tr-3xl rounded-bl-3xl shadow-xl transition duration-500 ease-in-out transform hover:scale-105 hover:-rotate-3">
   <div class="aspect-w-3 aspect-h-2">
     <img
       class="object-cover shadow-lg rounded-tr-3xl rounded-bl-3xl"
-      src="/images/ourTeam/ClarkSellHeadshot.jpeg"
+      src="{member.headshotUrl}"
       alt="" />
   </div>
   <div class="text-lg leading-6 font-medium space-y-1">
-    <h3>Clark Sell</h3>
-    <p class="text-u-navy">Founder and Practitioner</p>
+    <h3>{`${member.firstName} ${member.lastName}`}</h3>
+    <p class="text-u-navy">{member.title}</p>
   </div>
   <div class="text-lg">
     <p class="text-gray-500 line-clamp-6">
-      I’m a very passionate, entrepreneurial person whose love for developing
-      software was born from my obsessive passion for building and customizing
-      automobiles. This love of creativity, this love of building, creating,
-      lead me to software development. Like the automobile shrunk the world, the
-      computer helped people scale. I love the Web. I love Mobile Apps. I love
-      IoT and how it’s easier than ever to get a small micro controller to just
-      do a thing. Technology is changing the world, and I am glad to be a small
-      part of it.
+      {member.bio}
     </p>
   </div>
 
