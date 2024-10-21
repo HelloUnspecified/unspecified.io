@@ -5,12 +5,12 @@ import Layout from "../components/layout"
 import ContentBlock from "../components/shared/contentBlock"
 import SEO from "../components/shared/seo"
 import BlogPostPreview from "../components/blogPostPreview"
-import Contact from "../components/contact"
+// import Contact from "../components/contact"
 import TakeAction from "../components/takeAction"
 import Technologies from "../components/technologies"
 import TwitchVideo from "../components/twitchVideo"
 import { below, colors } from "../utilities"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 
 const Main = styled.div`
   height: 60vh;
@@ -149,7 +149,7 @@ const IndexPage = ({ data }) => {
 
   const bottomBlock = (
     <Peoples>
-      {people.map(person => (
+      {people.map((person) => (
         <PersonBlock
           key={person.node.slug.current}
           to={`/${person.node.slug.current}`}
@@ -175,7 +175,7 @@ const IndexPage = ({ data }) => {
       </Main>
 
       {/* TAKE ACTION */}
-      <div
+      {/* <div
         style={{
           width: "100%",
           backgroundColor: colors.linen,
@@ -184,7 +184,7 @@ const IndexPage = ({ data }) => {
         <ContentBlock type="short">
           <TakeAction />
         </ContentBlock>
-      </div>
+      </div> */}
 
       {/* ABOUT */}
       <ContentBlock border id="about" side="left" top borderColor="gold">
@@ -202,7 +202,7 @@ const IndexPage = ({ data }) => {
         </p>
         {bottomBlock}
         <Logos>
-          {logos.map(logo => (
+          {logos.map((logo) => (
             <AboutLogo src={logo.node.image.asset.url} key={logo.node.name} />
           ))}
           <div
@@ -227,7 +227,7 @@ const IndexPage = ({ data }) => {
       >
         <ContentBlock id="blog" type="wide" side="right" topSpillOver>
           <CurrentPosts>
-            {posts.map(post => (
+            {posts.map((post) => (
               <BlogPostPreview post={post} />
             ))}
           </CurrentPosts>
@@ -250,7 +250,7 @@ const IndexPage = ({ data }) => {
         <ContentBlock id="services">
           <h2>Services</h2>
           <ServicesList>
-            {services.map(service => (
+            {services.map((service) => (
               <Service>
                 <ServiceTitle>{service.node.title}</ServiceTitle>
                 <p>{service.node.description}</p>
@@ -262,10 +262,10 @@ const IndexPage = ({ data }) => {
 
       <TwitchVideo />
 
-      {/* CONTACT FORM */}
+      {/* CONTACT FORM
       <ContentBlock id="contact" border bottom side="right">
         <Contact />
-      </ContentBlock>
+      </ContentBlock> */}
     </Layout>
   )
 }
