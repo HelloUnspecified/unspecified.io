@@ -15,7 +15,7 @@ export const SITE = {
   tagline: "Software that brings people closer.",
   description:
     "Unspecified is an independent software company founded by Clark and Carrie Sell in Spring Grove, Illinois. We build Troth, a private, encrypted home for your marriage, and we help companies build real communities.",
-  email: "clark@unspecified.io",
+  email: "hello@unspecified.io",
   location: "Spring Grove, Illinois",
   address: { locality: "Spring Grove", region: "IL", country: "US" },
   founders: [
@@ -29,7 +29,7 @@ export const SITE = {
       name: "Troth",
       url: "https://jointroth.co",
       tagline: "A private, encrypted home for your marriage.",
-      email: "clark@jointroth.co",
+      email: "hello@jointroth.co",
     },
     rehuman: {
       name: "re/Human",
