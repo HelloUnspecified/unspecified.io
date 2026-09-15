@@ -20,18 +20,16 @@ const CaptionTag = captionHref ? "a" : "span";
   class:list={["relative rounded-[14px] border border-us-brass/70", className]}
 >
   <slot />
-  {
-    caption && (
-      <CaptionTag
-        href={captionHref}
-        class:list={[
-          "absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 px-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.24em] whitespace-nowrap text-us-brass",
-          captionHref && "hover:text-us-red transition-colors",
-        ]}
-        style="background: var(--surface)"
-      >
-        {caption}
-      </CaptionTag>
-    )
-  }
+  {caption && (
+    <CaptionTag
+      href={captionHref}
+      class:list={[
+        "absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 px-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.24em] whitespace-nowrap text-us-brass",
+        captionHref && "hover:text-us-red transition-colors",
+      ]}
+      style="background: var(--surface)"
+    >
+      {caption}
+    </CaptionTag>
+  )}
 </div>

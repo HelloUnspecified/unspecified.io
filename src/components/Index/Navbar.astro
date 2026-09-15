@@ -21,32 +21,31 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
     </a>
 
     <nav aria-label="Primary" class="flex items-center gap-4 md:gap-8">
-      {
-        links.map((l) => {
-          const active = !l.external && current === l.href;
-          return (
-            <a
-              href={l.href}
-              target={l.external ? "_blank" : undefined}
-              rel={l.external ? "noopener noreferrer" : undefined}
-              aria-current={active ? "page" : undefined}
-              class:list={[
-                "link-draw font-mono text-[11px] md:text-xs uppercase tracking-[0.14em] md:tracking-[0.2em] transition-colors duration-200",
-                active
-                  ? "text-us-red"
-                  : "text-us-ink/70 hover:text-us-ink dark:text-us-paper/70 dark:hover:text-us-paper",
-              ]}
-            >
-              {l.label}
-              {l.external && (
-                <span aria-hidden="true" class="text-us-brass">
-                  ↗
-                </span>
-              )}
-            </a>
-          );
-        })
-      }
+      {links.map((l) => {
+        const active = !l.external && current === l.href;
+        return (
+          <a
+            href={l.href}
+            target={l.external ? "_blank" : undefined}
+            rel={l.external ? "noopener noreferrer" : undefined}
+            aria-current={active ? "page" : undefined}
+            class:list={[
+              "link-draw font-mono text-[11px] md:text-xs uppercase tracking-[0.14em] md:tracking-[0.2em] transition-colors duration-200",
+              active
+                ? "text-us-red"
+                : "text-us-ink/70 hover:text-us-ink dark:text-us-paper/70 dark:hover:text-us-paper",
+            ]}
+          >
+            {l.label}
+            {l.external && " "}
+            {l.external && (
+              <span aria-hidden="true" class="text-us-brass">
+                ↗
+              </span>
+            )}
+          </a>
+        );
+      })}
 
       <button
         id="theme-toggle"
@@ -75,9 +74,7 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
           aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4"></circle>
-          <path
-            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-          ></path>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
         </svg>
       </button>
     </nav>

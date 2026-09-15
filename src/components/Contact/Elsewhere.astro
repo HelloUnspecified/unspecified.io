@@ -23,50 +23,46 @@ const groups = [
 
 <section class="py-16 md:py-24">
   <div class="container-default">
-    <div
-      class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
-    >
+    <div class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-4">
         <div class="lg:sticky lg:top-32" data-reveal>
           <SectionLabel number="02" text="Elsewhere" />
         </div>
       </div>
       <div class="lg:col-span-8">
-        <Heading size="md" class="max-w-[20ch]" data-reveal
-          >Follow along.</Heading
-        >
+        <Heading size="md" class="max-w-[20ch]" data-reveal>
+          Follow along.
+        </Heading>
         <BodyText class="mt-6 max-w-[52ch]" data-reveal>
           Clark and Troth are the active accounts. Same handles nearly
           everywhere.
         </BodyText>
 
         <ul class="mt-12 border-t border-us-brass/40">
-          {
-            groups.map((g, i) => (
-              <li
-                class="border-b border-us-brass/40 py-8 md:py-10 grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-8"
-                data-reveal
-                style={`--reveal-delay:${i * 80}ms`}
-              >
-                <div class="md:col-span-4">
-                  <h3 class="font-heading font-semibold text-2xl tracking-[-0.015em] text-us-ink dark:text-us-paper">
-                    {g.label}
-                  </h3>
-                  {g.handle && (
-                    <p class="mt-1 font-mono text-xs tracking-[0.1em] text-us-brass">
-                      {g.handle}
-                    </p>
-                  )}
-                  <p class="mt-3 text-sm md:text-base leading-relaxed text-us-ink/60 dark:text-us-paper/60 max-w-[34ch]">
-                    {g.note}
+          {groups.map((g, i) => (
+            <li
+              class="border-b border-us-brass/40 py-8 md:py-10 grid grid-cols-1 gap-5 md:grid-cols-12 md:gap-8"
+              data-reveal
+              style={`--reveal-delay:${i * 80}ms`}
+            >
+              <div class="md:col-span-4">
+                <h3 class="font-heading font-semibold text-2xl tracking-[-0.015em] text-us-ink dark:text-us-paper">
+                  {g.label}
+                </h3>
+                {g.handle && (
+                  <p class="mt-1 font-mono text-xs tracking-[0.1em] text-us-brass">
+                    {g.handle}
                   </p>
-                </div>
-                <div class="md:col-span-8 md:pt-1">
-                  <Socials links={g.links} />
-                </div>
-              </li>
-            ))
-          }
+                )}
+                <p class="mt-3 text-sm md:text-base leading-relaxed text-us-ink/60 dark:text-us-paper/60 max-w-[34ch]">
+                  {g.note}
+                </p>
+              </div>
+              <div class="md:col-span-8 md:pt-1">
+                <Socials links={g.links} />
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

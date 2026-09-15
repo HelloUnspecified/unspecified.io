@@ -1,6 +1,6 @@
 # unspecified.io
 
-Marketing site for [Unspecified Software Co.](https://unspecified.io), built with Astro 5, Tailwind CSS 4, and MDX. Deployed to Cloudflare.
+Marketing site for [Unspecified Software Co.](https://unspecified.io), built with Astro 7, Tailwind CSS 4, and MDX. Fully static; deployed to Cloudflare as static assets (`wrangler.jsonc`, no adapter or worker).
 
 ## Commands
 

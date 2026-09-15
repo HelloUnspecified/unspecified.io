@@ -8,15 +8,15 @@ import { SITE } from "../../config/site";
 
 <section class="py-20 md:py-28">
   <div class="container-default">
-    <div
-      class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
-    >
+    <div class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-4" data-reveal>
         <SectionLabel number="06" text="Say hello" />
       </div>
 
       <div class="lg:col-span-8">
-        <Heading size="lg" data-reveal>We read everything.</Heading>
+        <Heading size="lg" data-reveal>
+          We read everything.
+        </Heading>
 
         <BodyText class="mt-6 max-w-[50ch]" data-reveal>
           Curious about Troth, want to work together, or just want to say hi?
@@ -26,13 +26,15 @@ import { SITE } from "../../config/site";
         <a
           href={`mailto:${SITE.email}`}
           class="link-draw mt-10 inline-block font-heading font-semibold text-2xl sm:text-3xl md:text-5xl tracking-[-0.02em] text-us-red break-all"
-          data-reveal>{SITE.email}</a
+          data-reveal
         >
+          {SITE.email}
+        </a>
 
         <div class="mt-10" data-reveal>
-          <CTAButton href="/contact" variant="outline"
-            >All the ways to reach us</CTAButton
-          >
+          <CTAButton href="/contact" variant="outline">
+            All the ways to reach us
+          </CTAButton>
         </div>
       </div>
     </div>

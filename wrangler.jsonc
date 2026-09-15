@@ -1,16 +1,9 @@
 {
-	"main": "dist/_worker.js/index.js",
-	"name": "unspecified-io",
+  "name": "unspecified-io",
   "compatibility_date": "2026-02-27",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public"
-  ],
-	"assets": {
-		"binding": "ASSETS",
-		"directory": "./dist"
-	},
-	"observability": {
-    "enabled": true
-  }
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+  "observability": { "enabled": true },
 }

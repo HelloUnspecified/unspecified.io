@@ -2,7 +2,7 @@
 
 ## Project
 
-Astro 5.x marketing site for Unspecified Software Co. (unspecified.io). Static output, deployed to Cloudflare. Tailwind CSS 4, MDX for page metadata. The site exists so people who look up the company understand it is a real, independent software company whose mission is connecting people. Every road leads to Troth (jointroth.co); consulting (re/Human) is past work, not a pitch. The site also fields speaking inquiries for Clark.
+Astro 7 marketing site for Unspecified Software Co. (unspecified.io). Fully static output, deployed to Cloudflare as static assets via `wrangler.jsonc` (no adapter, no worker, no SSR). Tailwind CSS 4, MDX for page metadata. The site exists so people who look up the company understand it is a real, independent software company whose mission is connecting people. Every road leads to Troth (jointroth.co); consulting (re/Human) is past work, not a pitch. The site also fields speaking inquiries for Clark.
 
 ## Commands
 
@@ -13,6 +13,7 @@ Astro 5.x marketing site for Unspecified Software Co. (unspecified.io). Static o
 
 ## Key Patterns
 
+- Astro 7 defaults apply: JSX whitespace rules (`compressHTML: 'jsx'`), so put an explicit `{" "}` between inline elements on separate lines; Markdown/MDX renders with Sätteri; import `z` from `astro/zod`.
 - Astro components (.astro) only. No React or other UI framework is installed; the only client JS is the theme toggle, header scroll state, scroll reveal, and the contact form submit.
 - Page metadata (title/description) lives in `src/content/pages/*.mdx` frontmatter, loaded via the Astro 5 Content Layer API (`getEntry("pages", "home")`)
 - Company facts (name, email, location, founders, product URLs, every social handle) live in `src/config/site.ts`. Never hard-code these in components; import `SITE`. Clients/testimonials live in `src/config/clients.ts`; adding a `quote` to a person renders it as a testimonial automatically.
