@@ -1,0 +1,119 @@
+---
+import "../css/tailwind.css";
+import SEO from "../components/functional/SEO.astro";
+import Navbar from "../components/Index/Navbar.astro";
+import Footer from "../components/Index/Footer.astro";
+import interTight600 from "@fontsource/inter-tight/files/inter-tight-latin-600-normal.woff2?url";
+import inter400 from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, ogImage, ogType, noindex, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <SEO
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+      jsonLd={jsonLd}
+    />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="preload"
+      href={interTight600}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={inter400}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Theme before first paint: saved choice, else the OS preference. -->
+    <script is:inline>
+      (function () {
+        try {
+          var saved = localStorage.getItem("us-theme");
+          var dark =
+            saved === "dark" ||
+            (!saved && matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body
+    class="min-h-dvh flex flex-col bg-us-paper text-us-ink dark:bg-us-ink dark:text-us-paper font-body antialiased transition-colors duration-300"
+  >
+    <!-- Paper grain, barely there. -->
+    <svg
+      class="pointer-events-none fixed inset-0 z-9999 h-full w-full opacity-[0.028] dark:opacity-[0.045]"
+      aria-hidden="true"
+    >
+      <filter id="grain">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.9"
+          numOctaves="2"
+          stitchTiles="stitch"></feTurbulence>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain)"></rect>
+    </svg>
+
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-200 focus:bg-us-red focus:text-white focus:px-4 focus:py-2 focus:rounded-md"
+      >Skip to content</a
+    >
+
+    <Navbar />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Scroll reveal for [data-reveal]. One observer for the whole page.
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      if (reduce || !("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("is-in"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-in");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

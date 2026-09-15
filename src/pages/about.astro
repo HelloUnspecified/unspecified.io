@@ -1,0 +1,37 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Intro from "../components/About/Intro.astro";
+import Story from "../components/About/Story.astro";
+import Beliefs from "../components/About/Beliefs.astro";
+import Work from "../components/About/Work.astro";
+import People from "../components/About/People.astro";
+import { SITE } from "../config/site";
+
+const page = await getEntry("pages", "about");
+const pageUrl = new URL(Astro.url.pathname, SITE.url).href;
+const { title, description, ogType } = page!.data;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description,
+      about: { "@id": `${SITE.url}/#organization` },
+      isPartOf: { "@id": `${SITE.url}/#website` },
+    },
+  ],
+};
+---
+
+<Layout title={title} description={description} ogType={ogType} jsonLd={jsonLd}>
+  <Intro />
+  <Story />
+  <Beliefs />
+  <Work />
+  <People />
+</Layout>

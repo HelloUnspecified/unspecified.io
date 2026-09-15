@@ -1,0 +1,84 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import { SITE } from "../../config/site";
+
+const work = [
+  {
+    name: "Troth",
+    meta: "iOS · Coming 2026",
+    body: "A private, encrypted home for your marriage. The conversations, letters, memories, and promises two people are keeping, sealed between two iPhones.",
+    href: SITE.products.troth.url,
+    label: "jointroth.co",
+  },
+  {
+    name: "re/Human",
+    meta: "Community practice",
+    body: "Our community-architecture practice: helping founders and teams design how the people around their business find each other, connect, and stay.",
+    href: SITE.products.rehuman.url,
+    label: "joinrehuman.com",
+  },
+  {
+    name: "THAT Conference",
+    meta: "Founded by Clark",
+    body: "A family-friendly, community-run technology conference that grew into one of the largest of its kind in the United States.",
+    href: "https://thatconference.com",
+    label: "thatconference.com",
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container-default">
+    <div
+      class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-32" data-reveal>
+          <SectionLabel number="04" text="Things we've built" />
+        </div>
+      </div>
+      <div class="lg:col-span-8">
+        <Heading size="md" class="max-w-[20ch]" data-reveal>
+          Products, and the communities around them.
+        </Heading>
+
+        <ul class="mt-12 md:mt-16 border-t border-us-brass/40">
+          {
+            work.map((w, i) => (
+              <li
+                class="border-b border-us-brass/40 py-8 md:py-10"
+                data-reveal
+                style={`--reveal-delay:${i * 80}ms`}
+              >
+                <a
+                  href={w.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-8"
+                >
+                  <div class="md:col-span-4">
+                    <h3 class="font-heading font-semibold text-2xl md:text-3xl tracking-[-0.015em] text-us-ink dark:text-us-paper group-hover:text-us-red transition-colors">
+                      {w.name}
+                    </h3>
+                    <p class="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-us-brass">
+                      {w.meta}
+                    </p>
+                  </div>
+                  <div class="md:col-span-8">
+                    <p class="text-base md:text-lg leading-relaxed text-us-ink/70 dark:text-us-paper/70 max-w-[52ch]">
+                      {w.body}
+                    </p>
+                    <p class="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-us-ink/50 dark:text-us-paper/50 group-hover:text-us-red transition-colors">
+                      {w.label} <span aria-hidden="true">↗</span>
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

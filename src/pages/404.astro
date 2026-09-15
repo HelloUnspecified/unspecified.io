@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionLabel from "../elements/SectionLabel.astro";
+import Heading from "../elements/Heading.astro";
+import BodyText from "../elements/BodyText.astro";
+import CTAButton from "../elements/CTAButton.astro";
+import Mark from "../components/functional/Mark.astro";
+---
+
+<Layout
+  title="Page not found | Unspecified Software Co."
+  description="That page doesn't exist."
+  noindex
+>
+  <section class="min-h-[80vh] flex items-center pt-32 pb-20">
+    <div class="container-default">
+      <Mark class="h-16 w-16 text-us-red/80" />
+      <SectionLabel text="404" class="mt-10" />
+      <Heading as="h1" size="lg" class="mt-6 max-w-[16ch]">
+        Unspecified, indeed.
+      </Heading>
+      <BodyText class="mt-6 max-w-[44ch]">
+        There's nothing at this address. It may have moved, or it may never have
+        been specified in the first place.
+      </BodyText>
+      <div class="mt-10">
+        <CTAButton href="/" variant="contrast">Back to the start</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>

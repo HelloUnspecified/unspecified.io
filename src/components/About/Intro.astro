@@ -1,0 +1,34 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+---
+
+<section class="pt-32 md:pt-44 pb-16 md:pb-24">
+  <div class="container-default">
+    <div data-reveal>
+      <SectionLabel text="About" />
+    </div>
+    <Heading
+      as="h1"
+      size="xl"
+      class="mt-8 max-w-[14ch]"
+      data-reveal
+      style="--reveal-delay:100ms"
+    >
+      A small company with a specific purpose.
+    </Heading>
+    <div class="mt-10 md:mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
+      <BodyText
+        size="lg"
+        class="lg:col-span-8 lg:col-start-5 max-w-[40ch]"
+        data-reveal
+        style="--reveal-delay:200ms"
+      >
+        Unspecified Software Co. is an independent software company founded by
+        Clark and Carrie Sell. We build products that help people connect with
+        each other, in ways that hold up over time.
+      </BodyText>
+    </div>
+  </div>
+</section>

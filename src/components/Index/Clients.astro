@@ -1,0 +1,104 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+import { PEOPLE, COMPANIES } from "../../config/clients";
+
+const quotes = PEOPLE.filter((p) => p.quote);
+---
+
+<section class="py-20 md:py-28">
+  <div class="container-default">
+    <div
+      class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-32" data-reveal>
+          <SectionLabel number="03" text="Who we've worked with" />
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <Heading size="md" class="max-w-[20ch]" data-reveal>
+          Real companies. Real people. Real communities.
+        </Heading>
+        <BodyText class="mt-6 max-w-[54ch]" data-reveal>
+          Before Troth, we spent years helping founders and teams turn the
+          people around their business into a community. These are some of them.
+        </BodyText>
+
+        <!-- Faces -->
+        <ul
+          class="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4"
+        >
+          {
+            PEOPLE.map((p, i) => (
+              <li data-reveal style={`--reveal-delay:${i * 50}ms`}>
+                <div class="overflow-hidden rounded-[10px] border border-us-brass/40 bg-us-cream dark:bg-us-coal">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    decoding="async"
+                    class="block aspect-square w-full object-cover grayscale contrast-[1.05] transition duration-700 ease-out-expo hover:grayscale-0"
+                  />
+                </div>
+                <p class="mt-3 font-heading font-semibold text-base tracking-[-0.01em] text-us-ink dark:text-us-paper">
+                  {p.name}
+                </p>
+                <p class="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-us-brass">
+                  {p.company}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- Quotes render only once there is copy for them. -->
+        {
+          quotes.length > 0 && (
+            <ul class="mt-16 space-y-10">
+              {quotes.map((q) => (
+                <li class="border-l-2 border-us-red pl-6" data-reveal>
+                  <blockquote class="text-lg md:text-xl leading-relaxed text-us-ink dark:text-us-paper text-pretty">
+                    “{q.quote}”
+                  </blockquote>
+                  <p class="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-us-ink/60 dark:text-us-paper/60">
+                    {q.name} · <span class="text-us-brass">{q.company}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        <!-- Companies -->
+        <p
+          class="mt-14 md:mt-16 font-mono text-[11px] uppercase tracking-[0.22em] text-us-ink/50 dark:text-us-paper/50"
+          data-reveal
+        >
+          Companies and communities
+        </p>
+        <ul
+          class="mt-4 flex flex-wrap gap-x-2 gap-y-2 font-heading font-semibold text-lg md:text-xl tracking-[-0.01em] text-us-ink/80 dark:text-us-paper/80"
+          data-reveal
+        >
+          {
+            COMPANIES.map((c, i) => (
+              <li class="flex items-center gap-2">
+                {i > 0 && (
+                  <span aria-hidden="true" class="text-us-brass/70">
+                    ·
+                  </span>
+                )}
+                <span>{c}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

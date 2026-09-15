@@ -1,0 +1,34 @@
+# Unspecified Software Co.
+
+> Software that brings people closer. Unspecified is an independent software company founded by Clark and Carrie Sell in Spring Grove, Illinois.
+
+Unspecified Software Co. (unspecified.io) builds Troth. The company is founder-owned and founder-run. Clark Sell is available for speaking engagements (keynotes, workshops, podcasts); email clark@unspecified.io with the subject "Speaking inquiry".
+
+## Products and work
+
+- Troth (https://jointroth.co): a private, end-to-end encrypted home for your marriage. iOS. Coming to iPhone in 2026. Built by Clark and Carrie Sell. Contact: clark@jointroth.co
+- re/Human (https://joinrehuman.com): the company's earlier community-architecture practice. Past clients include ForceBuilders, The A-List Global, Olive and Atlas Travel, Geneva Autobody, Masterpiece Bookkeeping, and Chicam Studios.
+- THAT Conference (https://thatconference.com): founded by Clark Sell.
+
+## People
+
+- Clark Sell, Founder. 25+ years building software; founder of THAT Conference. @theclarksell on X, Instagram, Threads, TikTok; @clarksell on YouTube; linkedin.com/in/csell5
+- Carrie Sell, Chief Operating Officer.
+
+## Social
+
+- Troth: @joinTroth on X and Instagram; linkedin.com/company/jointroth
+- Unspecified: github.com/HelloUnspecified
+
+## Pages
+
+- Privacy: https://unspecified.io/privacy/
+- Terms: https://unspecified.io/terms/
+
+- Home: https://unspecified.io/
+- About: https://unspecified.io/about/
+- Contact: https://unspecified.io/contact/
+
+## Contact
+
+- Email: clark@unspecified.io

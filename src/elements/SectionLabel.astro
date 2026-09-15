@@ -1,0 +1,26 @@
+---
+/**
+ * Small mono eyebrow above a heading. Optional numeral ("01") renders in brass
+ * before the text, e.g. `01 — Why we exist`.
+ */
+interface Props {
+  text: string;
+  number?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { text, number, class: className = "", ...rest } = Astro.props;
+---
+
+<p
+  class:list={[
+    "font-mono text-[11px] md:text-xs uppercase tracking-[0.22em] text-us-ink/60 dark:text-us-paper/60 flex items-center gap-3",
+    className,
+  ]}
+  {...rest}
+>
+  {number && <span class="text-us-brass">{number}</span>}
+  {number && <span class="h-px w-6 bg-us-brass/60" aria-hidden="true" />}
+  <span>{text}</span>
+</p>

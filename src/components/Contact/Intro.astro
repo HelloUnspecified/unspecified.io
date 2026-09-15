@@ -1,0 +1,80 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+import { SITE } from "../../config/site";
+
+const channels = [
+  {
+    label: "Email",
+    value: SITE.email,
+    href: `mailto:${SITE.email}`,
+    note: "Best for almost everything. We reply personally.",
+  },
+  {
+    label: "Speaking",
+    value: "Invite Clark to speak",
+    href: `mailto:${SITE.email}?subject=${encodeURIComponent("Speaking inquiry")}`,
+    note: "Keynotes, workshops, podcasts. Tell us the event and the date.",
+  },
+  {
+    label: "About Troth",
+    value: SITE.products.troth.email,
+    href: `mailto:${SITE.products.troth.email}`,
+    note: "Waitlist, early access, and anything about the app.",
+  },
+];
+---
+
+<section class="pt-32 md:pt-44 pb-12 md:pb-16">
+  <div class="container-default">
+    <div data-reveal>
+      <SectionLabel text="Contact" />
+    </div>
+    <Heading
+      as="h1"
+      size="xl"
+      class="mt-8 max-w-[12ch]"
+      data-reveal
+      style="--reveal-delay:100ms"
+    >
+      Say hello.
+    </Heading>
+    <div class="mt-10 md:mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
+      <BodyText
+        size="lg"
+        class="lg:col-span-8 lg:col-start-5 max-w-[40ch]"
+        data-reveal
+        style="--reveal-delay:200ms"
+      >
+        Curious about Troth, interested in working together, or just want to say
+        hi? Pick whichever of these is easiest. One of us reads every message.
+      </BodyText>
+    </div>
+
+    <ul
+      data-reveal
+      style="--reveal-delay:300ms"
+      class="mt-16 md:mt-24 grid grid-cols-1 gap-px overflow-hidden rounded-[14px] border border-us-brass/50 bg-us-brass/30 md:grid-cols-3"
+    >
+      {
+        channels.map((c) => (
+          <li class="bg-us-paper dark:bg-us-ink p-7 md:p-9">
+            <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-us-brass">
+              {c.label}
+            </p>
+            <a
+              href={c.href}
+              class="link-draw mt-4 inline-block font-heading font-semibold text-xl md:text-2xl tracking-[-0.015em] text-us-ink dark:text-us-paper hover:text-us-red dark:hover:text-us-red transition-colors break-all"
+            >
+              {c.value}
+            </a>
+            <p class="mt-3 text-sm md:text-base text-us-ink/60 dark:text-us-paper/60 leading-relaxed">
+              {c.note}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

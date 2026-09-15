@@ -1,0 +1,44 @@
+---
+/**
+ * solid    — red fill, the one primary action on a page
+ * contrast — ink/paper fill that flips with the theme
+ * outline  — brass hairline, quiet secondary action
+ * link     — text + arrow, for inline "read more" moments
+ * External hrefs get target=_blank automatically.
+ */
+interface Props {
+  href: string;
+  variant?: "solid" | "contrast" | "outline" | "link";
+  class?: string;
+}
+
+const { href, variant = "solid", class: className = "" } = Astro.props;
+const external = /^https?:\/\//.test(href);
+
+const base =
+  "group inline-flex items-center gap-2.5 font-medium transition-[background-color,color,border-color,transform] duration-300 ease-out-expo focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-us-red";
+
+const variantClasses: Record<string, string> = {
+  solid:
+    "bg-us-red text-white hover:bg-us-red-deep px-6 py-3.5 text-base rounded-md",
+  contrast:
+    "bg-us-ink text-us-paper dark:bg-us-paper dark:text-us-ink hover:bg-us-red hover:text-white dark:hover:bg-us-red dark:hover:text-white px-6 py-3.5 text-base rounded-md",
+  outline:
+    "border border-us-brass/70 text-us-ink dark:text-us-paper hover:border-us-brass hover:bg-us-brass/10 px-6 py-3.5 text-base rounded-md",
+  link: "text-us-red hover:text-us-red-deep dark:hover:text-white text-base",
+};
+---
+
+<a
+  href={href}
+  class:list={[base, variantClasses[variant], className]}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  <slot />
+  <span
+    aria-hidden="true"
+    class="inline-block transition-transform duration-300 ease-out-expo group-hover:translate-x-1"
+    >→</span
+  >
+</a>

@@ -1,0 +1,96 @@
+---
+/**
+ * Legal pages (/privacy, /terms, /copyright), rendered from src/content/legal.
+ */
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import SectionLabel from "../elements/SectionLabel.astro";
+import Heading from "../elements/Heading.astro";
+import { SITE } from "../config/site";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("legal");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"legal">;
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const pageUrl = new URL(Astro.url.pathname, SITE.url).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: entry.data.title,
+  description: entry.data.description,
+  isPartOf: { "@id": `${SITE.url}/#website` },
+};
+---
+
+<Layout
+  title={`${entry.data.title} | ${SITE.name}`}
+  description={entry.data.description}
+  jsonLd={jsonLd}
+>
+  <section class="pt-32 md:pt-44 pb-16 md:pb-24">
+    <div class="container-default">
+      <SectionLabel text="Legal" />
+      <Heading as="h1" size="lg" class="mt-8 max-w-[14ch]">
+        {entry.data.title}
+      </Heading>
+      <p
+        class="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-us-ink/50 dark:text-us-paper/50"
+      >
+        Last modified {entry.data.lastModified}
+      </p>
+
+      <div class="legal mt-14 md:mt-20 max-w-[68ch] lg:ml-[calc(100%/3)]">
+        <Content />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal :global(p) {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: color-mix(in oklab, currentColor 72%, transparent);
+    margin-top: 1.1rem;
+  }
+  .legal :global(h2) {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid
+      color-mix(in oklab, var(--color-us-brass) 40%, transparent);
+  }
+  .legal :global(h3) {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+    margin-top: 2rem;
+  }
+  .legal :global(a) {
+    color: var(--color-us-red);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  @media (min-width: 768px) {
+    .legal :global(p) {
+      font-size: 1.0625rem;
+    }
+  }
+</style>

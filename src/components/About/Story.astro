@@ -1,0 +1,77 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+---
+
+<section class="py-16 md:py-24">
+  <div class="container-default">
+    <figure
+      class="relative overflow-hidden rounded-[14px] border border-us-brass/50"
+      data-reveal
+    >
+      <img
+        src="/assets/img/people/clark-on-stage.jpg"
+        alt="Clark Sell on stage at THAT Conference in front of a slide that reads: What has heart and meaning for you?"
+        width="799"
+        height="533"
+        loading="lazy"
+        decoding="async"
+        class="block w-full h-auto aspect-3/2 object-cover"
+      />
+      <figcaption
+        class="absolute bottom-0 inset-x-0 px-5 py-4 bg-linear-to-t from-us-ink/80 to-transparent font-mono text-[11px] uppercase tracking-[0.2em] text-us-paper/90"
+      >
+        Clark on stage at THAT Conference
+      </figcaption>
+    </figure>
+
+    <div
+      class="mt-20 md:mt-28 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-32" data-reveal>
+          <SectionLabel number="01" text="The name" />
+        </div>
+      </div>
+      <div class="lg:col-span-8">
+        <Heading size="md" class="max-w-[22ch]" data-reveal>
+          “Unspecified” is what you call a thing before anyone decides what it's
+          for.
+        </Heading>
+        <BodyText class="mt-8 max-w-[58ch]" data-reveal>
+          We kept the name because it turned out to be honest. We've never been
+          defined by one product, one platform, or one stack. We've shipped
+          software used by millions of people and built communities that outgrew
+          us. Today, all of it points at one thing: Troth.
+        </BodyText>
+        <BodyText class="mt-5 max-w-[58ch]" data-reveal>
+          What has never been unspecified is the reason. From the beginning, our
+          mission has been to create software that connects people in a deeper,
+          more meaningful way. It's still the test every project has to pass.
+        </BodyText>
+      </div>
+    </div>
+
+    <div
+      class="mt-20 md:mt-28 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-32" data-reveal>
+          <SectionLabel number="02" text="How we work" />
+        </div>
+      </div>
+      <div class="lg:col-span-8">
+        <Heading size="md" class="max-w-[22ch]" data-reveal>
+          Founder-owned. Founder-run. Nobody between you and the people who made
+          the thing.
+        </Heading>
+        <BodyText class="mt-8 max-w-[58ch]" data-reveal>
+          We write our own code. We answer our own email. We ship what we would
+          want to use ourselves, and we build it with the people who are going
+          to use it. When you write to Unspecified, one of us reads it.
+        </BodyText>
+      </div>
+    </div>
+  </div>
+</section>

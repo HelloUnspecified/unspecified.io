@@ -1,0 +1,29 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Intro from "../components/Contact/Intro.astro";
+import Form from "../components/Contact/Form.astro";
+import Elsewhere from "../components/Contact/Elsewhere.astro";
+import { SITE } from "../config/site";
+
+const page = await getEntry("pages", "contact");
+const pageUrl = new URL(Astro.url.pathname, SITE.url).href;
+const { title, description, ogType } = page!.data;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: title,
+  description,
+  about: { "@id": `${SITE.url}/#organization` },
+  isPartOf: { "@id": `${SITE.url}/#website` },
+};
+---
+
+<Layout title={title} description={description} ogType={ogType} jsonLd={jsonLd}>
+  <Intro />
+  <Form />
+  <Elsewhere />
+</Layout>

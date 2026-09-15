@@ -1,0 +1,147 @@
+---
+/**
+ * Contact form posting to web3forms.com. Renders only when
+ * PUBLIC_WEB3FORMS_KEY is set (see .env.example); otherwise the page relies on
+ * the direct channels above it.
+ */
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import { SITE } from "../../config/site";
+
+const key = SITE.web3formsKey;
+
+const field =
+  "w-full bg-transparent border-b border-us-ink/25 dark:border-us-paper/25 py-3 text-base md:text-lg text-us-ink dark:text-us-paper placeholder:text-us-ink/35 dark:placeholder:text-us-paper/35 focus:outline-none focus:border-us-red transition-colors";
+---
+
+{
+  key && (
+    <section class="py-16 md:py-24">
+      <div class="container-default">
+        <div class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
+          <div class="lg:col-span-4">
+            <div class="lg:sticky lg:top-32" data-reveal>
+              <SectionLabel number="01" text="Or write it here" />
+            </div>
+          </div>
+          <div class="lg:col-span-8">
+            <Heading size="md" class="max-w-[20ch]" data-reveal>
+              Send a note.
+            </Heading>
+
+            <form
+              id="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              class="mt-10 max-w-2xl space-y-8"
+              data-reveal
+            >
+              <input type="hidden" name="access_key" value={key} />
+              <input
+                type="hidden"
+                name="subject"
+                value="New message from unspecified.io"
+              />
+              <input type="hidden" name="from_name" value="unspecified.io" />
+              <input
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                tabindex="-1"
+                autocomplete="off"
+              />
+
+              <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                <label class="block">
+                  <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-us-ink/60 dark:text-us-paper/60">
+                    Name
+                  </span>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    autocomplete="name"
+                    class={field}
+                  />
+                </label>
+                <label class="block">
+                  <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-us-ink/60 dark:text-us-paper/60">
+                    Email
+                  </span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                    class={field}
+                  />
+                </label>
+              </div>
+
+              <label class="block">
+                <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-us-ink/60 dark:text-us-paper/60">
+                  Message
+                </span>
+                <textarea
+                  name="message"
+                  required
+                  rows="5"
+                  class={`${field} resize-y`}
+                />
+              </label>
+
+              <div class="flex flex-wrap items-center gap-6">
+                <button
+                  type="submit"
+                  class="inline-flex items-center gap-2.5 rounded-md bg-us-red px-6 py-3.5 text-base font-medium text-white hover:bg-us-red-deep transition-colors disabled:opacity-60 cursor-pointer"
+                >
+                  Send message <span aria-hidden="true">→</span>
+                </button>
+                <p
+                  id="contact-status"
+                  class="text-sm text-us-ink/60 dark:text-us-paper/60"
+                  aria-live="polite"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  const form = document.getElementById(
+    "contact-form",
+  ) as HTMLFormElement | null;
+  const status = document.getElementById("contact-status");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = form.querySelector(
+      "button[type=submit]",
+    ) as HTMLButtonElement;
+    button.disabled = true;
+    if (status) status.textContent = "Sending…";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        form.reset();
+        if (status) status.textContent = "Sent. We'll get back to you soon.";
+      } else {
+        throw new Error(data.message || "Something went wrong.");
+      }
+    } catch (err) {
+      if (status)
+        status.textContent =
+          "That didn't go through. Email us directly and we'll sort it out.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>

@@ -1,0 +1,24 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Index/Hero.astro";
+import Why from "../components/Index/Why.astro";
+import Speaking from "../components/Index/Speaking.astro";
+import Clients from "../components/Index/Clients.astro";
+import Troth from "../components/Index/Troth.astro";
+import Founders from "../components/Index/Founders.astro";
+import Contact from "../components/Index/Contact.astro";
+
+const page = await getEntry("pages", "home");
+const { title, description, ogType } = page!.data;
+---
+
+<Layout title={title} description={description} ogType={ogType}>
+  <Hero />
+  <Troth />
+  <Why />
+  <Clients />
+  <Founders />
+  <Speaking />
+  <Contact />
+</Layout>

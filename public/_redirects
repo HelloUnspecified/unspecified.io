@@ -1,0 +1,7 @@
+# Routes from the 2020 site that search engines may still hold.
+/blog/*              /            301
+/clark               /about       301
+/carrie              /about       301
+/legal/privacy       /privacy     301
+/legal/terms-of-use  /terms       301
+/legal/copyright     /terms       301

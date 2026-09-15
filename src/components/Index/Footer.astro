@@ -1,0 +1,116 @@
+---
+import Logo from "../functional/Logo.astro";
+import { SITE } from "../../config/site";
+
+const year = new Date().getFullYear();
+const ext = (l: { url: string }) => l.url.startsWith("http");
+const cols = [
+  {
+    title: "Company",
+    links: [
+      { name: "About", url: "/about" },
+      { name: "Contact", url: "/contact" },
+      ...SITE.socials.unspecified.links,
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      { name: "Troth", url: SITE.products.troth.url },
+      { name: "Speaking", url: "/#speaking" },
+    ],
+  },
+  {
+    title: "Troth",
+    handle: SITE.socials.troth.handle,
+    links: SITE.socials.troth.links,
+  },
+  {
+    title: "Clark",
+    handle: SITE.socials.clark.handle,
+    links: SITE.socials.clark.links,
+  },
+];
+---
+
+<footer class="mt-24 md:mt-32 border-t border-us-brass/30">
+  <div class="container-default pt-14 pb-10 md:pt-20 md:pb-12">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-4">
+        <a
+          href="/"
+          class="inline-block"
+          aria-label="Unspecified Software Co. home"
+        >
+          <Logo height={40} />
+        </a>
+        <p
+          class="mt-6 max-w-xs text-base text-us-ink/70 dark:text-us-paper/70 leading-relaxed"
+        >
+          {SITE.tagline} An independent software company founded by Clark and Carrie
+          Sell.
+        </p>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="link-draw mt-5 inline-block text-base text-us-red hover:text-us-red-deep dark:hover:text-us-paper transition-colors"
+          >{SITE.email}</a
+        >
+      </div>
+
+      <div
+        class="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:col-span-8 lg:pl-8"
+      >
+        {
+          cols.map((c) => (
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-[0.2em] text-us-brass mb-4">
+                {c.title}
+                {"handle" in c && (
+                  <span class="block mt-0.5 normal-case tracking-normal text-us-ink/45 dark:text-us-paper/45">
+                    {c.handle}
+                  </span>
+                )}
+              </p>
+              <ul class="space-y-2.5">
+                {c.links.map((l) => (
+                  <li>
+                    <a
+                      href={l.url}
+                      target={ext(l) ? "_blank" : undefined}
+                      rel={ext(l) ? "me noopener noreferrer" : undefined}
+                      class="link-draw text-sm md:text-base text-us-ink/80 hover:text-us-ink dark:text-us-paper/80 dark:hover:text-us-paper transition-colors"
+                    >
+                      {l.name}
+                      {ext(l) && (
+                        <span aria-hidden="true" class="text-us-brass text-xs">
+                          {" "}
+                          ↗
+                        </span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div
+      class="mt-14 md:mt-20 pt-6 border-t border-us-ink/10 dark:border-us-paper/10 flex flex-col gap-3 md:flex-row md:items-center md:justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-us-ink/50 dark:text-us-paper/50"
+    >
+      <span>&copy; {year} {SITE.name} All rights reserved.</span>
+      <span class="flex flex-wrap gap-x-5 gap-y-2">
+        <a href="/privacy" class="hover:text-us-red transition-colors"
+          >Privacy</a
+        >
+        <a href="/terms" class="hover:text-us-red transition-colors">Terms</a>
+        <a href="/copyright" class="hover:text-us-red transition-colors"
+          >Copyright</a
+        >
+        <span>{SITE.location}</span>
+      </span>
+    </div>
+  </div>
+</footer>

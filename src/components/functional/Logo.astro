@@ -1,0 +1,26 @@
+---
+/**
+ * The Unspecified wordmark (red italic "Unspecified" + brass frame with
+ * "SOFTWARE CO"). Transparent SVG, reads correctly on light and dark.
+ */
+interface Props {
+  class?: string;
+  /** Rendered height in px; width follows the 3185:1015 aspect ratio. */
+  height?: number;
+  priority?: boolean;
+}
+
+const { class: className = "", height = 36, priority = false } = Astro.props;
+const width = Math.round(height * (3185 / 1015));
+---
+
+<img
+  src="/assets/img/logo/unspecified-logo.svg"
+  alt="Unspecified Software Co."
+  width={width}
+  height={height}
+  fetchpriority={priority ? "high" : undefined}
+  decoding="async"
+  class:list={["block select-none w-auto", className]}
+  style={`height:${height}px`}
+/>

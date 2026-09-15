@@ -1,0 +1,88 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import Frame from "../../elements/Frame.astro";
+import CTAButton from "../../elements/CTAButton.astro";
+import Socials from "../functional/Socials.astro";
+import { SITE, YEARS_MARRIED } from "../../config/site";
+
+const people = [
+  {
+    name: "Clark Sell",
+    role: "Founder",
+    bio: "More than 25 years building software, with engineering roles at Microsoft, Allstate, and Telerik along the way. Founded THAT Conference. Speaks regularly about building software, community, and the people side of both, and is available for keynotes and workshops.",
+  },
+  {
+    name: "Carrie Sell",
+    role: "Chief Operating Officer",
+    bio: `Runs the business side of Unspecified and is building Troth alongside Clark. Together since ${SITE.story.togetherSince}, married ${YEARS_MARRIED} years, which makes her the other half of the product's origin story.`,
+  },
+];
+---
+
+<section class="py-16 md:py-24">
+  <div class="container-default">
+    <div
+      class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-32" data-reveal>
+          <SectionLabel number="05" text="The people" />
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <Heading size="md" class="max-w-[20ch]" data-reveal
+          >Clark and Carrie Sell.</Heading
+        >
+
+        <div
+          class="mt-12 md:mt-16 grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-10"
+        >
+          <figure class="md:col-span-5" data-reveal>
+            <Frame caption="Founders" class="p-2">
+              <img
+                src="/assets/img/people/clark-and-carrie-2.jpg"
+                alt="Clark and Carrie Sell"
+                width="900"
+                height="1200"
+                loading="lazy"
+                decoding="async"
+                class="block w-full h-auto aspect-3/4 object-cover rounded-[10px]"
+              />
+            </Frame>
+          </figure>
+
+          <div class="md:col-span-7 md:pt-2 space-y-10">
+            {
+              people.map((p, i) => (
+                <div data-reveal style={`--reveal-delay:${i * 80}ms`}>
+                  <h3 class="font-heading font-semibold text-2xl md:text-3xl tracking-[-0.015em] text-us-ink dark:text-us-paper">
+                    {p.name}
+                  </h3>
+                  <p class="mt-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-us-brass">
+                    {p.role}
+                  </p>
+                  <p class="mt-4 text-base md:text-lg leading-relaxed text-us-ink/70 dark:text-us-paper/70 max-w-[48ch]">
+                    {p.bio}
+                  </p>
+                  {i === 0 && (
+                    <Socials
+                      links={SITE.socials.clark.links}
+                      compact
+                      class="mt-5"
+                    />
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="mt-16 md:mt-20" data-reveal>
+          <CTAButton href="/contact" variant="contrast">Get in touch</CTAButton>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,140 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+import CTAButton from "../../elements/CTAButton.astro";
+import { SITE } from "../../config/site";
+
+const troth = SITE.products.troth;
+
+const seasons = [
+  { when: "Year one", what: "Still learning to live in the same room." },
+  {
+    when: "Year seven",
+    what: "Kids are small; the marriage is easy to overlook.",
+  },
+  {
+    when: "Year fifteen",
+    what: "Deciding whether to grow into the next season.",
+  },
+  { when: "Empty nesters", what: "Figuring out who they are as two again." },
+  {
+    when: "Any hard year",
+    what: "Something happened, and now they're rebuilding.",
+  },
+];
+---
+
+<section
+  id="troth"
+  class="troth-section relative scroll-mt-24 bg-us-ink dark:bg-us-coal text-us-paper py-24 md:py-36 overflow-hidden"
+>
+  <!-- A single warm glow, low, like a lamp in the corner of the room. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -bottom-40 -right-40 h-[38rem] w-[38rem] rounded-full bg-troth-rust/20 blur-[120px]"
+  >
+  </div>
+
+  <div
+    class="container-default relative grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16"
+  >
+    <div class="lg:col-span-6">
+      <div data-reveal>
+        <SectionLabel
+          number="01"
+          text="Our product"
+          class="text-us-paper/60!"
+        />
+      </div>
+
+      <Heading size="lg" class="mt-8 text-us-paper!" data-reveal>
+        Troth. A private, encrypted home for your marriage.
+      </Heading>
+
+      <BodyText class="mt-8 text-us-paper/70! max-w-[48ch]" data-reveal>
+        The conversations, letters, memories, and promises two people are
+        keeping, in one place that belongs only to them. Not the group thread.
+        Not the camera roll. Not a company's servers.
+      </BodyText>
+
+      <ul
+        class="mt-8 space-y-3 text-sm md:text-base text-us-paper/80"
+        data-reveal
+      >
+        <li class="flex gap-3">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-us-brass"
+          ></span>
+          End-to-end encrypted between two iPhones. Nothing leaves your devices.
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-us-brass"
+          ></span>
+          No cloud, no AI, no company in the middle, including ours.
+        </li>
+        <li class="flex gap-3">
+          <span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-us-brass"
+          ></span>
+          Built by Clark and Carrie Sell with the couples on the waitlist.
+        </li>
+      </ul>
+
+      <div
+        class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
+        data-reveal
+      >
+        <CTAButton href={troth.url}>Join the waitlist</CTAButton>
+        <a
+          href={troth.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-draw font-mono text-xs uppercase tracking-[0.2em] text-us-paper/70 hover:text-us-paper"
+          >jointroth.co</a
+        >
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 lg:pl-6" data-reveal style="--reveal-delay:120ms">
+      <p
+        class="font-mono text-[11px] uppercase tracking-[0.22em] text-us-brass"
+      >
+        Who it's for
+      </p>
+      <p
+        class="mt-3 font-heading font-semibold text-2xl md:text-3xl tracking-[-0.015em] text-us-paper max-w-[18ch]"
+      >
+        For any marriage worth doing well.
+      </p>
+      <ol class="mt-8 border-t border-us-paper/15">
+        {
+          seasons.map((s) => (
+            <li class="grid grid-cols-[8.5rem_1fr] gap-x-4 py-4 border-b border-us-paper/15">
+              <span class="font-mono text-xs uppercase tracking-[0.16em] text-us-brass pt-1">
+                {s.when}
+              </span>
+              <span class="text-base md:text-lg text-us-paper/80 leading-relaxed">
+                {s.what}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+      <p
+        class="mt-6 text-sm md:text-base text-us-paper/60 leading-relaxed max-w-[44ch]"
+      >
+        Not only for marriages in crisis, and not only the ones with everything
+        figured out. It's for the couples in between, which is to say most of
+        us.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .troth-section {
+    --surface: var(--color-us-ink);
+  }
+  :global(.dark) .troth-section {
+    --surface: var(--color-us-coal);
+  }
+</style>

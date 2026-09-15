@@ -1,0 +1,67 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+import CTAButton from "../../elements/CTAButton.astro";
+import Frame from "../../elements/Frame.astro";
+import TrothCard from "../functional/TrothCard.astro";
+import { SITE } from "../../config/site";
+---
+
+<section class="relative pt-28 pb-16 md:pt-40 md:pb-24">
+  <div class="container-default">
+    <Frame
+      caption="Troth · Coming to iPhone in 2026"
+      captionHref="#troth"
+      class="px-6 py-12 sm:px-10 md:px-14 md:py-16 lg:px-16 lg:py-20"
+      data-reveal
+    >
+      <div
+        class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 lg:items-center"
+      >
+        <div class="lg:col-span-7">
+          <div data-reveal style="--reveal-delay:120ms">
+            <SectionLabel text={`${SITE.name} · ${SITE.location}`} />
+          </div>
+
+          <Heading
+            as="h1"
+            size="lg"
+            class="mt-8 max-w-[14ch] !text-[2.75rem] md:!text-6xl lg:!text-7xl"
+            data-reveal
+            style="--reveal-delay:200ms"
+          >
+            We build software that brings people closer.
+          </Heading>
+
+          <BodyText
+            size="lg"
+            class="mt-8 max-w-[38ch]"
+            data-reveal
+            style="--reveal-delay:300ms"
+          >
+            Unspecified is a small, independent software company founded by
+            Clark and Carrie Sell. Our product is Troth: a private, encrypted
+            home for your marriage, built by two people who've been married for
+            23 years.
+          </BodyText>
+
+          <div
+            class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
+            data-reveal
+            style="--reveal-delay:400ms"
+          >
+            <CTAButton href={SITE.products.troth.url}
+              >Join the Troth waitlist</CTAButton
+            >
+            <CTAButton href="/about" variant="link">About us</CTAButton>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5" data-reveal style="--reveal-delay:350ms">
+          <TrothCard />
+        </div>
+      </div>
+    </Frame>
+  </div>
+</section>

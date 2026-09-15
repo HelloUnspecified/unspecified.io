@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts via @fontsource. Only the weights actually used. */
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+
+@import "@fontsource/inter-tight/latin-500.css";
+@import "@fontsource/inter-tight/latin-600.css";
+@import "@fontsource/inter-tight/latin-700.css";
+
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
+
+/* Newsreader: Troth's brand serif. Used only where Troth is represented. */
+@import "@fontsource/newsreader/latin-400.css";
+@import "@fontsource/newsreader/latin-400-italic.css";
+@import "@fontsource/newsreader/latin-500.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  --font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Inter Tight", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-troth: Newsreader, "Iowan Old Style", Georgia, serif;
+
+  /* Unspecified brand tokens. Red + brass are lifted from the logo. */
+  --color-us-red: #ce3240;
+  --color-us-red-deep: #a8202e;
+  --color-us-brass: #c3996b;
+  --color-us-ink: #141416;
+  --color-us-coal: #1d1d20;
+  --color-us-paper: #f4f1ea;
+  --color-us-cream: #ebe6db;
+
+  /* Troth product palette (used only when representing Troth). */
+  --color-troth-rust: #a24b34;
+  --color-troth-wine: #7a2e39;
+  --color-troth-linen: #f5f0e8;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: color-mix(in oklab, currentColor 12%, transparent);
+  }
+
+  html {
+    /* `--surface` is the current section background. Elements that need to
+       "cut" a border (the bracket Frame caption) paint with it. */
+    --surface: var(--color-us-paper);
+  }
+  html.dark {
+    --surface: var(--color-us-ink);
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-us-red) 85%, white);
+    color: white;
+  }
+
+  /* Scroll-reveal: opt in with data-reveal. JS in Layout flips `is-in`. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.9s var(--ease-out-expo),
+      transform 0.9s var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+@utility container-default {
+  @apply mx-auto w-full max-w-[1240px] px-6 md:px-10;
+}
+
+/* Thin brass hairline used as a section divider (echoes the logo frame). */
+@utility hairline {
+  border-top: 1px solid
+    color-mix(in oklab, var(--color-us-brass) 45%, transparent);
+}
+
+/* Underline links that draw in from the left. */
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.4s var(--ease-out-expo);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}

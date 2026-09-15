@@ -1,0 +1,38 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+import CTAButton from "../../elements/CTAButton.astro";
+---
+
+<section class="py-20 md:py-32">
+  <div
+    class="container-default grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+  >
+    <div class="lg:col-span-4">
+      <div class="lg:sticky lg:top-32" data-reveal>
+        <SectionLabel number="02" text="Why we exist" />
+      </div>
+    </div>
+
+    <div class="lg:col-span-8">
+      <Heading size="md" class="max-w-[22ch]" data-reveal>
+        Most software is built to hold your attention. Ours is built to hand it
+        back to the people in your life.
+      </Heading>
+
+      <BodyText class="mt-8 max-w-[58ch]" data-reveal>
+        We've built products, platforms, and communities that outgrew us. The
+        common thread was never a technology. It was a belief that the best
+        thing software can do is put two people in the same room, even when they
+        aren't. Troth is that belief, built.
+      </BodyText>
+
+      <div class="mt-8" data-reveal>
+        <CTAButton href="/about#beliefs" variant="link"
+          >What we believe</CTAButton
+        >
+      </div>
+    </div>
+  </div>
+</section>

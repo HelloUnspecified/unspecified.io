@@ -1,0 +1,40 @@
+---
+/**
+ * A row of social links for one account group (see SITE.socials).
+ * `compact` renders names only; default renders name + handle.
+ */
+import type { SocialLink } from "../../config/site";
+
+interface Props {
+  links: readonly SocialLink[];
+  compact?: boolean;
+  class?: string;
+}
+
+const { links, compact = false, class: className = "" } = Astro.props;
+---
+
+<ul class:list={["flex flex-wrap gap-2", className]}>
+  {
+    links.map((l) => (
+      <li>
+        <a
+          href={l.url}
+          target="_blank"
+          rel="me noopener noreferrer"
+          class:list={[
+            "group inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] transition-colors",
+            "border-us-ink/15 text-us-ink/70 hover:border-us-brass hover:text-us-ink dark:border-us-paper/20 dark:text-us-paper/70 dark:hover:border-us-brass dark:hover:text-us-paper",
+          ]}
+        >
+          <span>{l.name}</span>
+          {!compact && l.handle && (
+            <span class="normal-case tracking-normal text-us-brass">
+              {l.handle}
+            </span>
+          )}
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,83 @@
+---
+/**
+ * Troth, represented in its own voice: linen surface, Newsreader serif,
+ * the two-oval mark. Links to jointroth.co. Used in the hero.
+ */
+import { SITE } from "../../config/site";
+
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+const troth = SITE.products.troth;
+---
+
+<a
+  href={troth.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Troth: Love isn't a feeling. It's what you do. Visit jointroth.co"
+  class:list={[
+    "troth-card group block rounded-[10px] bg-troth-linen px-7 py-9 sm:px-9 sm:py-11 text-[#2a211c]",
+    className,
+  ]}
+>
+  <div class="flex items-center gap-3">
+    <svg
+      width="36"
+      height="22"
+      viewBox="0 0 64 40"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M18.5 6.2c4.1 0 7 6.4 7 14.1 0 7.7-2.9 13.9-7 13.9s-7-6.2-7-13.9c0-7.7 2.9-14.1 7-14.1Z"
+        fill="#A24B34"></path>
+      <path
+        d="M39.5 6.2c4.1 0 7 6.4 7 14.1 0 7.7-2.9 13.9-7 13.9s-7-6.2-7-13.9c0-7.7 2.9-14.1 7-14.1Z"
+        fill="#7A2E39"></path>
+    </svg>
+    <span
+      class="font-troth text-sm font-medium uppercase tracking-[0.34em] pl-[0.34em]"
+      >Troth</span
+    >
+  </div>
+
+  <p
+    class="font-troth mt-9 md:mt-12 text-[2rem] sm:text-[2.6rem] leading-[1.06] tracking-[-0.015em] text-balance"
+  >
+    Love isn't a feeling.<br />It's what you <em class="italic text-troth-rust"
+      >do.</em
+    >
+  </p>
+
+  <p class="font-troth mt-5 text-lg md:text-xl text-[#2a211c]/70">
+    {troth.tagline}
+  </p>
+
+  <div
+    class="mt-9 md:mt-12 pt-4 border-t border-[#2a211c]/15 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between font-mono text-[10px] md:text-[11px] uppercase tracking-[0.22em]"
+  >
+    <span class="text-troth-rust group-hover:underline underline-offset-4"
+      >Join the waitlist ↗</span
+    >
+    <span class="text-[#2a211c]/50">Sealed for two</span>
+  </div>
+</a>
+
+<style>
+  .troth-card {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.5) inset,
+      0 24px 60px -28px rgba(0, 0, 0, 0.45);
+    transition:
+      transform 0.6s var(--ease-out-expo),
+      box-shadow 0.6s var(--ease-out-expo);
+  }
+  .troth-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.5) inset,
+      0 32px 70px -28px rgba(0, 0, 0, 0.55);
+  }
+</style>

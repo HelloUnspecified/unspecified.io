@@ -1,0 +1,60 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+import BodyText from "../../elements/BodyText.astro";
+import CTAButton from "../../elements/CTAButton.astro";
+import { SITE, YEARS_MARRIED } from "../../config/site";
+---
+
+<section class="py-20 md:py-32">
+  <div
+    class="container-default grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 lg:items-center"
+  >
+    <figure class="lg:col-span-5" data-reveal>
+      <div
+        class="relative overflow-hidden rounded-[14px] border border-us-brass/50 bg-us-cream dark:bg-us-coal"
+      >
+        <img
+          src="/assets/img/people/clark-and-carrie-2.jpg"
+          alt="Clark and Carrie Sell, founders of Unspecified Software Co."
+          width="900"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+          class="block w-full h-auto aspect-3/4 object-cover"
+        />
+      </div>
+      <figcaption
+        class="mt-4 font-mono text-[11px] uppercase tracking-[0.22em] text-us-ink/50 dark:text-us-paper/50"
+      >
+        Clark &amp; Carrie Sell
+      </figcaption>
+    </figure>
+
+    <div class="lg:col-span-7 lg:pl-4">
+      <div data-reveal>
+        <SectionLabel number="04" text="Who we are" />
+      </div>
+
+      <Heading size="md" class="mt-8 max-w-[20ch]" data-reveal>
+        Two people, one company, and a very specific reason for building it.
+      </Heading>
+
+      <BodyText class="mt-8 max-w-[56ch]" data-reveal>
+        Unspecified is run by Clark and Carrie Sell. Clark has spent more than
+        25 years building software, from enterprise engineering to founding THAT
+        Conference, one of the largest community-run technology conferences in
+        the country. Carrie runs the company's operations.
+      </BodyText>
+
+      <BodyText class="mt-5 max-w-[56ch]" data-reveal>
+        They've been together since {SITE.story.togetherSince} and married for
+        {YEARS_MARRIED} years. That's where Troth comes from.
+      </BodyText>
+
+      <div class="mt-10" data-reveal>
+        <CTAButton href="/about" variant="link">More about us</CTAButton>
+      </div>
+    </div>
+  </div>
+</section>

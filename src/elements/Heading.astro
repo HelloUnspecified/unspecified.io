@@ -1,0 +1,33 @@
+---
+export interface Props {
+  as?: "h1" | "h2" | "h3";
+  size?: "xl" | "lg" | "md" | "sm";
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  as: Tag = "h2",
+  size = "lg",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const sizeClasses: Record<string, string> = {
+  xl: "text-[2.75rem] leading-[1.02] md:text-7xl lg:text-[5.5rem] tracking-[-0.03em]",
+  lg: "text-4xl md:text-5xl lg:text-6xl tracking-[-0.025em] leading-[1.05]",
+  md: "text-3xl md:text-4xl lg:text-5xl tracking-[-0.02em] leading-[1.08]",
+  sm: "text-2xl md:text-3xl tracking-[-0.015em] leading-[1.15]",
+};
+---
+
+<Tag
+  class:list={[
+    "font-heading font-semibold text-us-ink dark:text-us-paper text-balance",
+    sizeClasses[size],
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</Tag>

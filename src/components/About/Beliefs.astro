@@ -1,0 +1,69 @@
+---
+import SectionLabel from "../../elements/SectionLabel.astro";
+import Heading from "../../elements/Heading.astro";
+
+const principles = [
+  {
+    n: "01",
+    title: "Private by design.",
+    body: "What's yours stays yours. Troth is end-to-end encrypted between two phones. No cloud, no AI, no company in the middle, including ours.",
+  },
+  {
+    n: "02",
+    title: "Small on purpose.",
+    body: "Unspecified is founder-owned and founder-run. The people making the decisions are the same people writing the code and answering the email.",
+  },
+  {
+    n: "03",
+    title: "Built to last.",
+    body: "We've spent decades shipping software and building communities. We would rather make something that still matters in ten years than something that trends this week.",
+  },
+  {
+    n: "04",
+    title: "Community, not audience.",
+    body: "An audience looks at you. A community looks at each other. Whether it's two people in a marriage or two thousand around a company, we build for the second one.",
+  },
+];
+---
+
+<section id="beliefs" class="py-16 md:py-24 scroll-mt-24">
+  <div class="container-default">
+    <div
+      class="hairline pt-14 md:pt-20 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16"
+    >
+      <div class="lg:col-span-4">
+        <div class="lg:sticky lg:top-32" data-reveal>
+          <SectionLabel number="03" text="What we believe" />
+        </div>
+      </div>
+      <div class="lg:col-span-8">
+        <Heading size="md" class="max-w-[20ch]" data-reveal>
+          Four things we won't trade away.
+        </Heading>
+        <ol class="mt-12 md:mt-16 border-t border-us-brass/40">
+          {
+            principles.map((p, i) => (
+              <li
+                class="grid grid-cols-[3rem_1fr] gap-x-4 md:grid-cols-[5rem_1fr] md:gap-x-8 py-8 md:py-10 border-b border-us-brass/40"
+                data-reveal
+                style={`--reveal-delay:${i * 80}ms`}
+              >
+                <span class="font-mono text-sm text-us-brass pt-1.5">
+                  {p.n}
+                </span>
+                <div>
+                  <h3 class="font-heading font-semibold text-2xl md:text-3xl tracking-[-0.015em] text-us-ink dark:text-us-paper">
+                    {p.title}
+                  </h3>
+                  <p class="mt-3 max-w-[52ch] text-base md:text-lg leading-relaxed text-us-ink/70 dark:text-us-paper/70">
+                    {p.body}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
